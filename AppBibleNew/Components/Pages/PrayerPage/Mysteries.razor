@@ -1,0 +1,84 @@
+﻿@page "/Rosary/Mysteries"
+@inject IRosaryService RosaryService
+@using AppBibleNew.Service
+@using AppBibleNew.Model
+
+<div class="container py-4" style="background-color:#f5f5f5; min-height:100vh;">
+    <h1 class="text-center mb-4" style="font-weight:700; color:#2c3e50;">🌟 Các Mầu Nhiệm Lần Mân Côi</h1>
+    <p class="text-center text-muted mb-5">Hãy bấm vào từng nhóm mầu nhiệm để xem chi tiết và tham gia cầu nguyện.</p>
+
+    @if (rosary == null)
+    {
+        <p class="text-center">⏳ Đang tải...</p>
+    }
+    else
+    {
+        <div class="accordion">
+            @foreach (var group in rosary.Mysteries.GetType().GetProperties())
+            {
+                var groupName = group.Name;
+                var items = (List<MysteryItem>)group.GetValue(rosary.Mysteries);
+                var isExpanded = expandedGroups.Contains(groupName);
+
+                <div class="accordion-item mb-3 shadow rounded" style="border:none; overflow:hidden;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button d-flex justify-content-between align-items-center @(isExpanded ? "" : "collapsed")"
+                                style="background: linear-gradient(90deg, #ffecd2, #fcb69f); font-weight:600; font-size:1.1rem; color:#2c3e50;"
+                                type="button"
+                                @onclick="() => ToggleGroup(groupName)">
+                            <span>@groupName</span>
+                            <span class="arrow" style="transition: transform 0.3s; display:inline-block; transform:@(isExpanded ? "rotate(90deg)" : "rotate(0deg)")">▶</span>
+                        </button>
+                    </h2>
+                    <div class="accordion-collapse @(isExpanded ? "show" : "collapse")">
+                        <div class="accordion-body" style="background-color:#ffffff; padding:15px 20px;">
+                            <ul class="list-unstyled mb-0">
+                                @foreach (var item in items)
+                                {
+                                    <li class="mb-2 d-flex align-items-start">
+                                        <div style="width:30px; height:30px; background-color:#fcb69f; color:white; font-weight:bold; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-right:10px;">
+                                            @item.Number
+                                        </div>
+                                        <div>
+                                            <b>@item.Title</b> <br />
+                                            <i class="text-muted">@item.Reference</i>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-5 text-muted" style="font-size:0.9rem;">
+            ✨ Cầu nguyện lần lượt từng mầu nhiệm theo thứ tự để cảm nhận ý nghĩa sâu sắc hơn.
+        </div>
+    }
+</div>
+
+@code {
+    private Rosary? rosary;
+    private HashSet<string> expandedGroups = new HashSet<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var root = await RosaryService.LoadRosaryAsync();
+        rosary = root.Rosary;
+
+        // Mở nhóm đầu tiên mặc định
+        if (rosary != null)
+        {
+            var firstGroup = rosary.Mysteries.GetType().GetProperties().FirstOrDefault();
+            if (firstGroup != null)
+                expandedGroups.Add(firstGroup.Name);
+        }
+    }
+
+    private void ToggleGroup(string groupName)
+    {
+        if (!expandedGroups.Add(groupName))
+            expandedGroups.Remove(groupName);
+    }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "rosary_flow": {
+      "intro": [
+        {
+          "step": 1,
+          "prayer": "Dấu Thánh Giá"
+        },
+        {
+          "step": 2,
+          "prayer": "Kinh Tin Kính"
+        },
+        {
+          "step": 3,
+          "prayer": "Kinh Lạy Cha"
+        },
+        {
+          "step": 4,
+          "prayer": "3 Kinh Kính Mừng (kính Đức Tin, Cậy, Mến)"
+        },
+        {
+          "step": 5,
+          "prayer": "Kinh Sáng Danh"
+        }
+      ],
+      "decade": [
+        {
+          "step": 1,
+          "prayer": "Xướng mầu nhiệm"
+        },
+        {
+          "step": 2,
+          "prayer": "Kinh Lạy Cha"
+        },
+        {
+          "step": 3,
+          "prayer": "10 Kinh Kính Mừng"
+        },
+        {
+          "step": 4,
+          "prayer": "Kinh Sáng Danh"
+        },
+        {
+          "step": 5,
+          "prayer": "Lời Fatima (tùy chọn)"
+        }
+      ],
+      "conclusion": [
+        {
+          "step": 1,
+          "prayer": "Kinh Lạy Nữ Vương"
+        },
+        {
+          "step": 2,
+          "prayer": "Kinh Truyền Tin (tùy giờ)"
+        },
+        {
+          "step": 3,
+          "prayer": "Kinh Cầu Cho Đức Giáo Hoàng"
+        }
+      ]
+    }
+  }
+
+]

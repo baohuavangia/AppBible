@@ -1,0 +1,128 @@
+[
+  {
+    "rosary": {
+      "intro": [
+        { "prayer": "Dấu Thánh Giá" },
+        { "prayer": "Kinh Tin Kính" },
+        { "prayer": "Kinh Lạy Cha" },
+        { "prayer": "3 Kinh Kính Mừng" },
+        { "prayer": "Kinh Sáng Danh" }
+      ],
+      "mysteries": {
+        "Vui": [
+          {
+            "number": 1,
+            "title": "Sứ Thần Truyền Tin cho Đức Mẹ",
+            "reference": "Lc 1:26-38"
+          },
+          {
+            "number": 2,
+            "title": "Đức Mẹ đi thăm viếng bà Ê-li-sa-bét",
+            "reference": "Lc 1:39-56"
+          },
+          {
+            "number": 3,
+            "title": "Đức Mẹ sinh Đức Giê-su nơi hang đá",
+            "reference": "Lc 2:1-20"
+          },
+          {
+            "number": 4,
+            "title": "Đức Mẹ dâng Chúa Giê-su trong Đền Thờ",
+            "reference": "Lc 2:22-35"
+          },
+          {
+            "number": 5,
+            "title": "Đức Mẹ tìm lại được Chúa Giê-su trong Đền Thờ",
+            "reference": "Lc 2:41-52"
+          }
+        ],
+        "Thương": [
+          {
+            "number": 1,
+            "title": "Đức Giê-su lo buồn đổ mồ hôi máu",
+            "reference": "Lc 22:39-46"
+          },
+          {
+            "number": 2,
+            "title": "Đức Giê-su chịu đánh đòn",
+            "reference": "Ga 19:1"
+          },
+          {
+            "number": 3,
+            "title": "Đức Giê-su chịu đội mão gai",
+            "reference": "Mt 27:27-31"
+          },
+          {
+            "number": 4,
+            "title": "Đức Giê-su vác Thánh Giá",
+            "reference": "Lc 23:26-32"
+          },
+          {
+            "number": 5,
+            "title": "Đức Giê-su chịu chết trên Thánh Giá",
+            "reference": "Lc 23:33-46"
+          }
+        ],
+        "Mừng": [
+          {
+            "number": 1,
+            "title": "Chúa Giê-su sống lại",
+            "reference": "Mt 28:1-10"
+          },
+          {
+            "number": 2,
+            "title": "Chúa Giê-su lên trời",
+            "reference": "Cv 1:6-11"
+          },
+          {
+            "number": 3,
+            "title": "Chúa Thánh Thần hiện xuống",
+            "reference": "Cv 2:1-13"
+          },
+          {
+            "number": 4,
+            "title": "Đức Mẹ hồn xác lên trời",
+            "reference": "Kh 12:1"
+          },
+          {
+            "number": 5,
+            "title": "Đức Mẹ được tôn vinh trên trời",
+            "reference": "Kh 12:1-6"
+          }
+        ],
+        "Sáng": [
+          {
+            "number": 1,
+            "title": "Chúa Giê-su chịu phép rửa tại sông Gio-đan",
+            "reference": "Mt 3:13-17"
+          },
+          {
+            "number": 2,
+            "title": "Chúa Giê-su làm phép lạ tại tiệc cưới Ca-na",
+            "reference": "Ga 2:1-11"
+          },
+          {
+            "number": 3,
+            "title": "Chúa Giê-su rao giảng Nước Trời và kêu gọi sám hối",
+            "reference": "Mc 1:14-15"
+          },
+          {
+            "number": 4,
+            "title": "Chúa Giê-su biến hình trên núi Ta-bo",
+            "reference": "Mt 17:1-8"
+          },
+          {
+            "number": 5,
+            "title": "Chúa Giê-su lập Bí tích Thánh Thể",
+            "reference": "Mt 26:26-29"
+          }
+        ]
+      },
+      "conclusion": [
+        { "prayer": "Kinh Lạy Nữ Vương" },
+        { "prayer": "Kinh Truyền Tin (tùy giờ)" }
+      ]
+    }
+  }
+
+]

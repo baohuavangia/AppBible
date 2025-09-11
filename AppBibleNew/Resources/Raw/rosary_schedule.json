@@ -1,0 +1,35 @@
+[
+  {
+    "schedule": [
+      {
+        "day": "Chủ Nhật",
+        "mystery": "Mừng"
+      },
+      {
+        "day": "Thứ Hai",
+        "mystery": "Vui"
+      },
+      {
+        "day": "Thứ Ba",
+        "mystery": "Thương"
+      },
+      {
+        "day": "Thứ Tư",
+        "mystery": "Mừng"
+      },
+      {
+        "day": "Thứ Năm",
+        "mystery": "Sáng"
+      },
+      {
+        "day": "Thứ Sáu",
+        "mystery": "Thương"
+      },
+      {
+        "day": "Thứ Bảy",
+        "mystery": "Vui"
+      }
+    ]
+  }
+
+]

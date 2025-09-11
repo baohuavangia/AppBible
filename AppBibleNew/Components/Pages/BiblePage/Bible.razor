@@ -1,0 +1,82 @@
+﻿@page "/Bible"
+@using AppBibleNew.Service
+@using AppBibleNew.Model
+@inject IBibleService BibleService
+@inject NavigationManager Nav
+
+<div class="row p-0 position-absolute top-50 start-50 translate-middle" style="height:100%; margin:auto;">
+    <div class="col-6 d-flex justify-content-center align-items-center">
+
+        <div @onclick="() => GoToBooks(cuuUocName)" class="card card-hover" style="width:65vw;">
+            <img class="card-img-top" src="Image/cuu_uoc_bia.png" />
+            <div class="overlay"></div>
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                <h4 class="card-title text-white fs-4">Cựu Ước</h4>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-6 d-flex justify-content-center align-items-center">
+
+        <div @onclick="() => GoToBooks(tanUocName)" class="card card-hover" style="width:65vw;">
+            <img class="card-img-top" src="Image/tan_uoc_bia.png" alt="Card image" />
+            <div class="overlay"></div>
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                <h4 class="card-title text-white fs-4">Tân Ước</h4>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .card-img-top {
+        object-fit: cover;
+        height: 70vh;
+        transition: transform 0.5s ease; /* mượt khi phóng to */
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* màu đen mờ */
+        border-radius: 0.25rem;
+        pointer-events: none; /* để hover xuyên qua overlay */
+    }
+
+    .card-hover {
+        overflow: hidden; /* ảnh phóng to nhưng không tràn ra ngoài */
+        position: relative;
+    }
+
+    /* Hover effect */
+    .card-hover:hover .card-img-top {
+        transform: scale(1.1); /* phóng to 10% */
+    }
+</style>
+
+@code {
+    private List<BibleRoot>? data;
+    private string? cuuUocName;
+    private string? tanUocName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        data = await BibleService.LoadBibleAsync();
+        if (data != null)
+        {
+            cuuUocName = data.FirstOrDefault(x => x.Bible.Contains("Cựu Ước"))?.Bible;
+            tanUocName = data.FirstOrDefault(x => x.Bible.Contains("Tân Ước"))?.Bible;
+        }
+    }
+
+    void GoToBooks(string? bibleName)
+    {
+        if (!string.IsNullOrEmpty(bibleName))
+            Nav.NavigateTo($"/bible/biblelist/{bibleName}");
+    }
+}

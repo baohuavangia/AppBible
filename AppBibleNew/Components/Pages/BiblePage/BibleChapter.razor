@@ -1,0 +1,251 @@
+﻿@page "/bible/{bibleName}/{bookName}"
+@using AppBibleNew.Service
+@using AppBibleNew.Model
+@using AppBibleNew.Model
+
+@inject IBibleService BibleService
+@inject IJSRuntime JS
+
+<style>
+    .highlight-verse {
+        background-color: yellow;
+        transition: background-color 0.5s ease;
+    }
+</style>
+
+<div class="container-fluid p-0">
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <h4 class="text-primary">@currentBook?.Book</h4>
+        </div>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Đang tải dữ liệu...</p>
+        </div>
+    }
+    else if (currentBook == null)
+    {
+        <div class="alert alert-warning text-center">
+            <h5>Không tìm thấy dữ liệu</h5>
+            <p>Sách: @bookName</p>
+            <p>Bộ: @bibleName</p>
+            <p>Số sách có sẵn: @(books?.Count ?? 0)</p>
+            @if (books?.Any() == true)
+            {
+                <p>Các sách có sẵn: @string.Join(", ", books.Select(b => b.Book))</p>
+            }
+        </div>
+    }
+    else
+    {
+        <!-- Navigation Controls -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+                    @* <button class="btn btn-outline-secondary btn-sm"
+                            @onclick="BackChapter"
+                            disabled="@(currentChapter <= 1)">
+                        ◀ Trước
+                    </button> *@
+
+                    <select class="form-select" style="width:150px;"
+                            value="@currentChapter"
+                            @onchange="OnChapterChanged">
+                        @for (int i = 1; i <= totalChapters; i++)
+                        {
+                            <option value="@i">Chương @i</option>
+                        }
+                    </select>
+
+                    <select class="form-select" style="width:150px;"
+                            value="@currentVerse"
+                            @onchange="OnVerseChanged">
+                        <option value="0">Chọn Câu</option>
+                        @if (currentChapterVerses?.Any() == true)
+                        {
+                            @foreach (var verse in currentChapterVerses)
+                            {
+                                <option value="@verse.VerseNumber">Câu @verse.VerseNumber</option>
+                            }
+                        }
+                    </select>
+
+                    @* <button class="btn btn-outline-secondary btn-sm"
+                            @onclick="NextChapter"
+                            disabled="@(currentChapter >= totalChapters)">
+                        Sau ▶
+                    </button> *@
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Display -->
+        <div class="row d-flex justify-content-center">
+            <div class="col-7">
+                <div class="card" style="margin: auto;">
+                    <div class="card-body" style="max-height: 70vh; overflow-y: auto;">
+                        @if (currentChapterVerses?.Any() == true)
+                        {
+                            <div>
+                                @foreach (var verse in currentChapterVerses)
+                                {
+                                    <span id="verse-@verse.VerseNumber"
+                                          class="@(verse.VerseNumber == currentVerse ? "highlight-verse" : "")"
+                                          style="margin-right:0.5rem;">
+                                        <strong>@verse.VerseNumber</strong>@verse.Text
+                                    </span>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info">
+                                <p>Chương @currentChapter không có dữ liệu.</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter Navigation Footer -->
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <div class="d-inline-flex align-items-center gap-3 p-2 bg-light rounded-pill">
+                    <button class="btn btn-sm btn-outline-primary"
+                            @onclick="BackChapter"
+                            disabled="@(currentChapter <= 1)">
+                        ‹
+                    </button>
+                    <span class="fw-semibold">Chương @currentChapter / @totalChapters</span>
+                    <button class="btn btn-sm btn-outline-primary"
+                            @onclick="NextChapter"
+                            disabled="@(currentChapter >= totalChapters)">
+                        ›
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public string bibleName { get; set; } = string.Empty;
+    [Parameter] public string bookName { get; set; } = string.Empty;
+
+    private List<BibleBook>? books;
+    private BibleBook? currentBook;
+    private int currentChapter = 1;
+    private int totalChapters = 0;
+    private List<Verse>? currentChapterVerses;
+    private int currentVerse = 0;
+    private bool isLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadBibleData();
+    }
+
+    private async Task LoadBibleData()
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            var bibles = await BibleService.LoadBibleAsync();
+
+            var bibleList = bibles?
+                .FirstOrDefault(x => string.Equals(x.Bible, bibleName, StringComparison.OrdinalIgnoreCase));
+
+            books = bibleList?.BibleBook;
+
+            currentBook = books?
+                .FirstOrDefault(x => string.Equals(x.Book, bookName, StringComparison.OrdinalIgnoreCase));
+
+            if (currentBook?.Chapters?.Any() == true)
+            {
+                totalChapters = currentBook.Chapters.Count;
+                currentChapter = 1;
+                LoadChapterContent();
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error loading bible data: {ex}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void LoadChapterContent()
+    {
+        if (currentBook?.Chapters == null) return;
+
+        var chapter = currentBook.Chapters[currentChapter - 1];
+
+        // Lấy tất cả câu trong chương, nối liền
+        currentChapterVerses = chapter.Sections?
+            .SelectMany(s => s.Subsections ?? new List<SubSection>())
+            .SelectMany(ss => ss.Content ?? new List<Verse>())
+            .OrderBy(v => v.VerseNumber)
+            .ToList();
+    }
+
+    private void NextChapter()
+    {
+        if (currentChapter < totalChapters)
+        {
+            currentChapter++;
+            currentVerse = 0; // reset highlight
+            LoadChapterContent();
+        }
+    }
+
+    private void BackChapter()
+    {
+        if (currentChapter > 1)
+        {
+            currentChapter--;
+            currentVerse = 0; // reset highlight
+            LoadChapterContent();
+        }
+    }
+
+    private async Task OnChapterChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int chap) &&
+            chap > 0 && chap <= totalChapters)
+        {
+            currentChapter = chap;
+            currentVerse = 0; // reset highlight
+            LoadChapterContent();
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task OnVerseChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int v) && v > 0)
+        {
+            currentVerse = v;
+            StateHasChanged(); // apply highlight
+            await ScrollToVerse(v);
+        }
+    }
+
+    private async Task ScrollToVerse(int verseNumber)
+    {
+        await Task.Delay(100); // đợi Blazor render
+        await JS.InvokeVoidAsync("eval",
+            $"document.getElementById('verse-{verseNumber}')?.scrollIntoView({{ behavior: 'smooth', block: 'center' }});");
+    }
+}

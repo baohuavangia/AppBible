@@ -1,0 +1,134 @@
+﻿@page "/Rosary/Basic"
+@using AppBibleNew.Model
+@using AppBibleNew.Service
+@inject IRosaryService RosaryService
+
+<div class="container py-4" style="background-color:#f0f4f8; min-height:100vh;">
+    <h1 class="text-center mb-4" style="font-weight:700; color:#2c3e50;">📿 Đọc Kinh Mân Côi</h1>
+    <p class="text-center text-muted mb-5">Hãy đọc từng bước để cảm nhận trọn vẹn ý nghĩa mầu nhiệm.</p>
+
+    @if (currentSteps == null || currentSteps.Count == 0)
+    {
+        <p class="text-center">⏳ Đang tải...</p>
+    }
+    else
+    {
+        <!-- Progress Bar -->
+        <div class="progress mb-3" style="height:12px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width:@((currentIndex + 1) * 100 / currentSteps.Count)%;"
+                 aria-valuenow="@(currentIndex + 1)" aria-valuemin="0" aria-valuemax="@currentSteps.Count">
+            </div>
+        </div>
+
+        <!-- Step Card -->
+        <div class="card shadow mb-3" style="border-radius:15px; border:none;">
+            <div class="card-header" style="background-color:#6fb1fc; color:white; font-weight:600; font-size:1.2rem; display:flex; align-items:center; border-top-left-radius:15px; border-top-right-radius:15px;">
+                <span style="width:35px; height:35px; background-color:#0056b3; color:white; font-weight:bold; border-radius:50%; display:flex; justify-content:center; align-items:center; margin-right:10px;">
+                    @(@currentIndex + 1)
+                </span>
+                Bước @(@currentIndex + 1) / @currentSteps.Count: @currentSteps[currentIndex].Title
+            </div>
+            <div class="card-body bg-white" style="font-size:1.3rem; line-height:1.8; min-height:220px;">
+                <p>@currentSteps[currentIndex].Content</p>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-secondary px-4" @onclick="PrevStep" disabled="@IsFirstStep">← Trước</button>
+            <button class="btn btn-primary px-4" @onclick="NextStep" disabled="@IsLastStep">Tiếp →</button>
+        </div>
+
+        <!-- Footer Tip -->
+        <div class="text-center mt-5 text-muted" style="font-size:1rem;">
+            ✨ Cầu nguyện từng bước, cảm nhận từng mầu nhiệm 🌟
+        </div>
+
+        <!-- Decoration Icon -->
+        <div class="text-center mt-2" style="font-size:1.8rem; color:#6fb1fc;">
+            ✝ 🌟 ✝
+        </div>
+    }
+</div>
+
+@code {
+    private List<(string Title, string Content)>? currentSteps;
+    private int currentIndex = 0;
+
+    private bool IsFirstStep => currentIndex == 0;
+    private bool IsLastStep => currentSteps != null && currentIndex == currentSteps.Count - 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        currentSteps = new List<(string Title, string Content)>();
+
+        var flow = await RosaryService.LoadRosaryFlowAsync();
+        if (flow == null) return;
+
+        // Load Intro
+        if (flow.Intro != null)
+        {
+            foreach (var step in flow.Intro)
+            {
+                currentSteps.Add((step.Prayer, step.Content));
+            }
+        }
+
+        // Load Mysteries theo ngày
+        var todayVN = DateTime.Now.DayOfWeek switch
+        {
+            DayOfWeek.Sunday => "Chủ Nhật",
+            DayOfWeek.Monday => "Thứ Hai",
+            DayOfWeek.Tuesday => "Thứ Ba",
+            DayOfWeek.Wednesday => "Thứ Tư",
+            DayOfWeek.Thursday => "Thứ Năm",
+            DayOfWeek.Friday => "Thứ Sáu",
+            DayOfWeek.Saturday => "Thứ Bảy",
+            _ => ""
+        };
+
+        var todayMysteryType = await RosaryService.GetMysteryByDayAsync(todayVN);
+        var mysteries = todayMysteryType != null
+            ? await RosaryService.LoadMysteriesAsync(todayMysteryType)
+            : new List<MysteryItem>();
+
+        // Load Decade
+        if (flow.Decade != null)
+        {
+            foreach (var m in mysteries)
+            {
+                foreach (var step in flow.Decade)
+                {
+                    string content = step.Prayer == "Xướng mầu nhiệm"
+                        ? $"{m.Number}. {m.Title} ({m.Reference})"
+                        : step.Content;
+
+                    currentSteps.Add((step.Prayer, content));
+                }
+            }
+        }
+
+        // Load Conclusion
+        if (flow.Conclusion != null)
+        {
+            foreach (var step in flow.Conclusion)
+            {
+                currentSteps.Add((step.Prayer, step.Content));
+            }
+        }
+
+        currentIndex = 0; // reset
+    }
+
+    private void NextStep()
+    {
+        if (!IsLastStep)
+            currentIndex++;
+    }
+
+    private void PrevStep()
+    {
+        if (!IsFirstStep)
+            currentIndex--;
+    }
+}

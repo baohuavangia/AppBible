@@ -1,0 +1,102 @@
+﻿@page "/Prayer/PrayerContent/{prayName}/{prayItem}"
+@using AppBibleNew.Model
+@using AppBibleNew.Service
+@inject IPrayerService PrayerService
+
+<h3>Nội dung các kinh</h3>
+
+@if (prayers == null)
+{
+    <p>Đang tải...</p>
+}
+else if (!prayers.Any())
+{
+    <p>Không tìm thấy dữ liệu cho "@prayItem" trong "@prayName".</p>
+}
+else
+{
+    <ul>
+        @foreach (var prayer in prayers)
+        {
+            <li>
+                <button class="btn btn-link" @onclick="() => OpenPrayer(prayer.ItemName, prayer.Text)">
+                    @prayer.ItemName
+                </button>
+            </li>
+        }
+    </ul>
+}
+
+@if (IsModalVisible)
+{
+    <div class="modal-backdrop" @onclick="CloseModal">
+        <div class="modal-content" @onclick:stopPropagation>
+            <h3>@ModalTitle</h3>
+            <p>@ModalContent</p>
+            <button class="btn btn-primary" @onclick="CloseModal">Đóng</button>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string prayName { get; set; }
+    [Parameter] public string prayItem { get; set; }
+
+    private List<PrayerItem>? prayers;
+
+    // Modal state
+    private bool IsModalVisible { get; set; }
+    private string ModalTitle { get; set; } = string.Empty;
+    private string ModalContent { get; set; } = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var decodedPrayName = Uri.UnescapeDataString(prayName);
+            var decodedPrayItem = Uri.UnescapeDataString(prayItem);
+
+            prayers = await PrayerService.LoadPrayerPartAsync(decodedPrayItem, decodedPrayName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Lỗi khi load dữ liệu: {ex.Message}");
+            prayers = new List<PrayerItem>();
+        }
+    }
+
+    private void OpenPrayer(string name, string text)
+    {
+        ModalTitle = name;
+        ModalContent = text;
+        IsModalVisible = true;
+    }
+
+    private void CloseModal()
+    {
+        IsModalVisible = false;
+    }
+}
+
+<style>
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 80%;
+    }
+</style>

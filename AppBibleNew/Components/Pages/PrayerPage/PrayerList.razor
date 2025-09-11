@@ -1,0 +1,155 @@
+﻿@page "/Prayer/PrayerList/{prayerName}"
+@using AppBibleNew.Model
+@using AppBibleNew.Service
+@inject IPrayerService PrayerService
+@inject NavigationManager Nav
+
+@if (data == null)
+{
+    <p>Đang load dữ liệu...</p>
+}
+else
+{
+    <div class="container">
+        <div class="row p-0" style="width: 70%; margin:auto;">
+            <!-- Box 1 -->
+            <div class="row m-1 p-0">
+                <div class="col-12">
+                    @if (Name1 != null)
+                    {
+                        <div @key="Name1" @onclick="() => GoToPrayer(Name1)" class="card card-hover" style="width:100%;">
+                            <img class="card-img-top" src="Image/prayer_picture.png" />
+                            <div class="overlay"></div>
+                            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                <h4 class="card-title text-white fs-4">@Box1Title</h4>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Boxes 2 & 3 -->
+            <div class="row p-0 m-1">
+                <div class="col-6">
+                    @if (Name2 != null)
+                    {
+                        <div @key="Name2" @onclick="() => GoToPrayer(Name2)" class="card card-hover" style="width:100%;">
+                            <img class="card-img-top" src="Image/prayer_picture.png" />
+                            <div class="overlay"></div>
+                            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                <h4 class="card-title text-white fs-4">@Box2Title</h4>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-6">
+                    @if (Name3 != null)
+                    {
+                        <div @key="Name3" @onclick="() => GoToPrayer(Name3)" class="card card-hover" style="width:100%;">
+                            <img class="card-img-top" src="Image/prayer_picture.png" />
+                            <div class="overlay"></div>
+                            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                <h4 class="card-title text-white fs-4">@Box3Title</h4>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Boxes 4 & 5 -->
+            <div class="row p-0 m-1">
+                <div class="col-6">
+                    @if (Name4 != null)
+                    {
+                        <div @key="Name4" @onclick="() => GoToPrayer(Name4)" class="card card-hover" style="width:100%;">
+                            <img class="card-img-top" src="Image/prayer_picture.png" />
+                            <div class="overlay"></div>
+                            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                <h4 class="card-title text-white fs-4">@Box4Title</h4>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-6">
+                    @if (Name5 != null)
+                    {
+                        <div @key="Name5" @onclick="() => GoToPrayer(Name5)" class="card card-hover" style="width:100%;">
+                            <img class="card-img-top" src="Image/prayer_picture.png" />
+                            <div class="overlay"></div>
+                            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                                <h4 class="card-title text-white fs-4">@Box5Title</h4>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string prayerName { get; set; }
+
+    private List<PrayerPart>? data;
+
+    private string? Name1;
+    private string? Name2;
+    private string? Name3;
+    private string? Name4;
+    private string? Name5;
+
+    private string Box1Title = "Các Kinh đọc sáng tối ngày thường và Chúa Nhật";
+    private string Box2Title = "Các Kinh Cầu";
+    private string Box3Title = "Ngắm các phép lần hạt";
+    private string Box4Title = "Kinh dâng lễ, những kinh dọn mình chịu lễ và kinh cám ơn";
+    private string Box5Title = "Kinh ngắm Đàng Thánh Giá và ít nhiều kinh khác";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        data = await PrayerService.LoadPrayerNameAsync(prayerName);
+        if (data != null)
+            {
+            Name1 = data.FirstOrDefault(x => x.Name == Box1Title)?.Name;
+            Name2 = data.FirstOrDefault(x => x.Name == Box2Title)?.Name;
+            Name3 = data.FirstOrDefault(x => x.Name == Box3Title)?.Name;
+            Name4 = data.FirstOrDefault(x => x.Name == Box4Title)?.Name;
+            Name5 = data.FirstOrDefault(x => x.Name == Box5Title)?.Name;
+            }
+      
+    }
+
+    void GoToPrayer(string? partName)
+    {
+        if (!string.IsNullOrEmpty(partName))
+            Nav.NavigateTo($"/Prayer/PrayerContent/{prayerName}/{partName}");
+    }
+}
+
+<style>
+    .card-img-top {
+        object-fit: cover;
+        height: 30vh;
+        transition: transform 0.5s ease;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 0.25rem;
+        pointer-events: none;
+    }
+
+    .card-hover {
+        overflow: hidden;
+        position: relative;
+    }
+
+        .card-hover:hover .card-img-top {
+            transform: scale(1.1);
+        }
+</style>

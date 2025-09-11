@@ -1,0 +1,72 @@
+﻿@page "/Rosary/Prayers"
+@inject IRosaryService RosaryService
+@using AppBibleNew.Service
+@using AppBibleNew.Model
+
+<div class="container py-4" style="background-color:#f5f5f5; min-height:100vh;">
+    <h1 class="text-center mb-3" style="font-weight:700; color:#2c3e50;">🙏 Các Kinh đọc trong chuỗi Mân Côi</h1>
+    <p class="text-center text-muted mb-5">Hãy tham khảo và đọc theo từng phần dưới đây.</p>
+
+    @if (rosary == null)
+    {
+        <p class="text-center">⏳ Đang tải...</p>
+    }
+    else
+    {
+        <div class="row g-3">
+            <!-- Mở đầu -->
+            <div class="col-12">
+                <div class="card shadow-sm rounded" style="border:none;">
+                    <div class="card-header" style="background: linear-gradient(90deg, #ffecd2, #fcb69f); font-weight:600; font-size:1.1rem;">
+                        Mở đầu
+                    </div>
+                    <div class="card-body bg-white">
+                        <ul class="list-unstyled mb-0">
+                            @foreach (var prayer in rosary.Intro)
+                            {
+                                <li class="mb-2 d-flex align-items-start">
+                                    <span class="me-2" style="width:25px; height:25px; background-color:#fcb69f; color:white; font-weight:bold; border-radius:50%; display:flex; justify-content:center; align-items:center;">✦</span>
+                                    <span>@prayer.Prayer</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kết thúc -->
+            <div class="col-12">
+                <div class="card shadow-sm rounded" style="border:none;">
+                    <div class="card-header" style="background: linear-gradient(90deg, #c1f0f6, #85d7ff); font-weight:600; font-size:1.1rem;">
+                        Kết thúc
+                    </div>
+                    <div class="card-body bg-white">
+                        <ul class="list-unstyled mb-0">
+                            @foreach (var prayer in rosary.Conclusion)
+                            {
+                                <li class="mb-2 d-flex align-items-start">
+                                    <span class="me-2" style="width:25px; height:25px; background-color:#85d7ff; color:white; font-weight:bold; border-radius:50%; display:flex; justify-content:center; align-items:center;">✦</span>
+                                    <span>@prayer.Prayer</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5 text-muted" style="font-size:0.9rem;">
+            ✨ Hãy đọc lần lượt từng kinh để cảm nhận trọn vẹn ý nghĩa.
+        </div>
+    }
+</div>
+
+@code {
+    private Rosary? rosary;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var root = await RosaryService.LoadRosaryAsync();
+        rosary = root.Rosary;
+    }
+}

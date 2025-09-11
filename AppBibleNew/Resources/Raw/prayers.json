@@ -1,0 +1,133 @@
+[
+  {
+    "partsname": "Các câu cầu nguyện",
+    "parts": [
+      {
+        "name": "Các Kinh đọc sáng tối ngày thường và Chúa Nhật",
+        "prayers": [
+          {
+            "name": "Kinh Dấu Thánh Giá",
+            "text": ""
+          },
+          {
+            "name": "Kinh Vì Dấu",
+            "text": ""
+          },
+          {
+            "name": "Kinh Lạy Cha",
+            "text": "Lạy Cha chúng con ở trên trời...\nXin Cha cho chúng con hôm nay lương thực hằng ngày..."
+          },
+          {
+            "name": "Kinh Kính Mừng",
+            "text": "Kính mừng Maria đầy ơn phúc, Đức Chúa Trời ở cùng Bà..."
+          },
+          {
+            "name": "Kinh Sáng Danh",
+            "text": "Sáng danh Đức Chúa Cha, và Đức Chúa Con, và Đức Chúa Thánh Thần..."
+          },
+          {
+            "name": "Kinh Ăn Năn Tội",
+            "text": "Lạy Chúa, con thật lòng ăn năn mọi tội lỗi con..."
+          },
+          {
+            "name": "Kinh Tin Kính (Ngắn)",
+            "text": "Tôi tin kính Đức Chúa Trời là Cha phép tắc vô cùng..."
+          },
+          {
+            "name": "Kinh Cám Ơn",
+            "text": "Con cám ơn Đức Chúa Trời đã cho con được làm người..."
+          },
+          {
+            "name": "Kinh Truyền Tin",
+            "text": "Thiên Thần Chúa truyền tin cho Rất Thánh Đức Bà Maria..."
+          },
+          {
+            "name": "Kinh Cầu Cho Đức Giáo Hoàng",
+            "text": "Xin Chúa gìn giữ Đức Giáo Hoàng Phanxicô..."
+          }
+          /* Thêm các kinh khác trong phần này, text có thể để trống nếu chưa có */
+        ]
+      },
+      {
+        "name": "Các Kinh Cầu",
+        "prayers": [
+          {
+            "name": "Kinh Cầu Tên Rất Thánh Đức Chúa Giêsu",
+            "text": ""
+          },
+          {
+            "name": "Kinh Cầu Trái Tim Đức Chúa Giêsu",
+            "text": ""
+          },
+          {
+            "name": "Kinh Cầu Chịu Nạn",
+            "text": ""
+          }
+          /* Thêm các kinh khác trong phần này */
+        ]
+      },
+      {
+        "name": "Ngắm các phép lần hạt",
+        "prayers": [
+          {
+            "name": "Phép lần hạt Mân Côi - Năm Sự Vui",
+            "text": ""
+          },
+          {
+            "name": "Phép lần hạt Mân Côi - Năm Sự Sáng",
+            "text": ""
+          },
+          {
+            "name": "Phép lần hạt Mân Côi - Năm Sự Thương",
+            "text": ""
+          },
+          {
+            "name": "Phép lần hạt Mân Côi - Năm Sự Mừng",
+            "text": ""
+          },
+          {
+            "name": "Phép lần hạt Bảy Sự Thương Khó Đức Bà",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "name": "Kinh dâng lễ, những kinh dọn mình chịu lễ và kinh cám ơn",
+        "prayers": [
+          {
+            "name": "Kinh Dâng Lễ",
+            "text": ""
+          },
+          {
+            "name": "Lời Than Thở Trước Khi Dọn Mình Chịu Lễ",
+            "text": ""
+          },
+          {
+            "name": "Kinh Cám Ơn Đức Chúa Cha",
+            "text": ""
+          }
+          /* Thêm các kinh còn lại */
+        ]
+      },
+      {
+        "name": "Kinh ngắm Đàng Thánh Giá và ít nhiều kinh khác",
+        "prayers": [
+          {
+            "name": "Kinh Ngắm Đàng Thánh Giá",
+            "text": ""
+          },
+          {
+            "name": "Kinh Kính Thánh Giá",
+            "text": ""
+          },
+          {
+            "name": "Kinh Cầu Cùng Thiên Chúa Ba Ngôi",
+            "text": ""
+          }
+          /* Thêm các kinh còn lại */
+        ]
+      }
+    ]
+  }
+
+]

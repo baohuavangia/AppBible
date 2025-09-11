@@ -1,0 +1,61 @@
+﻿@page "/bible/biblelist/{bibleName}"
+@using AppBibleNew.Model
+@using AppBibleNew.Service
+@inject IBibleService BibleService
+@inject NavigationManager Nav
+
+<div>
+    <div class="Main-Box">
+        @if (books is not null)
+        {
+            @foreach (var book in books)
+            {
+                <div class="box" @onclick="() => GoToChapters(book.Book)">
+                    <h5>@book.Book</h5>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Đang tải...</p>
+        }
+    </div>
+</div>
+
+<style>
+    .Main-Box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .box {
+        margin: auto;
+        width: 20vw;
+        height: 15vh;
+        background-color: aqua;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+</style>
+
+@code {
+    [Parameter] public string bibleName { get; set; }
+    private List<BibleBook>? books;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var bibles = await BibleService.LoadBibleAsync(); // lấy full Cựu Ước + Tân Ước
+        var bibleList = bibles.FirstOrDefault(x => x.Bible == bibleName);
+        books = bibleList?.BibleBook;
+    }
+
+    private void GoToChapters(string bookName)
+    {
+        // điều hướng đến trang Chapter
+        Nav.NavigateTo($"/bible/{bibleName}/{bookName}");
+    }
+}
