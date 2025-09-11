@@ -1,0 +1,217 @@
+﻿@page "/audioplayer"
+@using Plugin.Maui.Audio
+@inject IAudioManager audioManager
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h3 class="card-title text-center">🎵 Audio Player</h3>
+
+            <div class="mb-3">
+                <label class="form-label">Chọn bài hát:</label>
+                <select class="form-select" @onchange="OnSongSelected">
+                    <option disabled selected>-- chọn bài hát --</option>
+                    @foreach (var file in audioFiles)
+                    {
+                        <option value="@file" selected="@(file == currentSong)">
+                            @Path.GetFileName(file)
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="d-flex gap-2 my-3">
+                <button class="btn btn-secondary" @onclick="PrevSong">⏮ Previous</button>
+                <button class="btn btn-primary" @onclick="Play">▶ Play</button>
+                <button class="btn btn-warning" @onclick="Pause">⏸ Pause</button>
+                <button class="btn btn-danger" @onclick="Stop">⏹ Stop</button>
+                <button class="btn btn-secondary" @onclick="NextSong">⏭ Next</button>
+            </div>
+
+            <!-- progress bar -->
+            <div class="mb-3">
+                <label class="form-label">Tiến trình</label>
+                <input type="range" class="form-range"
+                       min="0" max="@duration"
+                       step="0.5" value="@position"
+                       @oninput="OnSeekChanged" />
+                <div class="d-flex justify-content-between">
+                    <small>@FormatTime(position)</small>
+                    <small>@FormatTime(duration)</small>
+                </div>
+            </div>
+
+            <!-- volume -->
+            <div class="mb-3">
+                <label class="form-label">Âm lượng</label>
+                <input type="range" class="form-range"
+                       min="0" max="1" step="0.1"
+                       value="@volume"
+                       @oninput="OnVolumeChanged" />
+            </div>
+
+            <p class="text-info">@status</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    IAudioPlayer? player;
+    double volume = 1.0;
+    double position = 0;
+    double duration = 0;
+    string status = "⏸ Chưa phát";
+    string? currentSong;
+    List<string> audioFiles = new();
+    System.Timers.Timer? timer;
+
+    protected override void OnInitialized()
+    {
+        string basePath = AppContext.BaseDirectory;
+        string audioPath = Path.Combine(basePath, "wwwroot", "audio");
+
+        if (Directory.Exists(audioPath))
+        {
+            audioFiles = Directory.GetFiles(audioPath, "*.*")
+                                  .Where(f => f.EndsWith(".wav") || f.EndsWith(".mp3"))
+                                  .ToList();
+        }
+
+        // Timer update progress
+        timer = new System.Timers.Timer(500);
+        timer.Elapsed += (s, e) =>
+        {
+            if (player != null)
+            {
+                position = player.CurrentPosition;
+                duration = player.Duration;
+                InvokeAsync(StateHasChanged);
+            }
+        };
+        timer.Start();
+    }
+
+    async Task LoadPlayer(string filePath)
+    {
+        Stop();
+        try
+        {
+            var fileStream = File.OpenRead(filePath);
+            player = audioManager.CreatePlayer(fileStream);
+            player.Volume = volume;
+            duration = player.Duration;
+
+            // gắn sự kiện khi hết bài
+            player.PlaybackEnded += async (s, e) =>
+            {
+                await NextSong();
+            };
+
+            status = $"✅ Loaded {Path.GetFileName(filePath)}";
+        }
+        catch (Exception ex)
+        {
+            status = $"❌ Lỗi load: {ex.Message}";
+        }
+    }
+
+    async Task Play()
+    {
+        if (player != null)
+        {
+            player.Play();
+            status = "▶ Đang phát...";
+        }
+        else if (!string.IsNullOrEmpty(currentSong))
+        {
+            await LoadPlayer(currentSong);
+            player?.Play();
+            status = "▶ Đang phát...";
+        }
+        else
+        {
+            status = "⚠ Chưa chọn bài hát!";
+        }
+    }
+
+    void Pause()
+    {
+        player?.Pause();
+        status = "⏸ Tạm dừng";
+    }
+
+    void Stop()
+    {
+        player?.Stop();
+        player?.Dispose();
+        player = null;
+        position = 0;
+        status = "⏹ Đã dừng";
+    }
+
+    async Task OnSongSelected(ChangeEventArgs e)
+    {
+        var selected = e.Value?.ToString();
+        if (!string.IsNullOrEmpty(selected))
+        {
+            currentSong = selected;
+            await LoadPlayer(currentSong);
+        }
+    }
+
+    void OnVolumeChanged(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out double v))
+        {
+            volume = v;
+            if (player != null)
+                player.Volume = volume;
+        }
+    }
+
+    void OnSeekChanged(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out double v))
+        {
+            position = v;
+            if (player != null && position <= duration)
+            {
+                player.Seek(position);
+            }
+        }
+    }
+
+    async Task NextSong()
+    {
+        if (string.IsNullOrEmpty(currentSong) || audioFiles.Count == 0) return;
+
+        int index = audioFiles.IndexOf(currentSong);
+        int nextIndex = (index + 1) % audioFiles.Count; // lặp vòng
+
+        currentSong = audioFiles[nextIndex];
+        await LoadPlayer(currentSong);
+        player?.Play();
+        status = $"▶ Next: {Path.GetFileName(currentSong)}";
+        await InvokeAsync(StateHasChanged);
+    }
+
+    async Task PrevSong()
+    {
+        if (string.IsNullOrEmpty(currentSong) || audioFiles.Count == 0) return;
+
+        int index = audioFiles.IndexOf(currentSong);
+        int prevIndex = (index - 1 + audioFiles.Count) % audioFiles.Count; // lùi vòng
+
+        currentSong = audioFiles[prevIndex];
+        await LoadPlayer(currentSong);
+        player?.Play();
+        status = $"▶ Previous: {Path.GetFileName(currentSong)}";
+        await InvokeAsync(StateHasChanged);
+    }
+
+    string FormatTime(double seconds)
+    {
+        var ts = TimeSpan.FromSeconds(seconds);
+        return ts.ToString(@"mm\:ss");
+    }
+}

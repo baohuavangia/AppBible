@@ -1,0 +1,234 @@
+﻿@page "/studyAudio"
+@using AppBibleNew.Service
+@inject AudioService audioService
+
+<div class="container mt-4">
+    <h3>🎶 Nhạc nền học tập</h3>
+
+    <!-- Chọn nguồn phát -->
+    <div class="mb-3">
+        <label class="form-label fw-bold">Chọn nguồn phát:</label>
+        <div>
+            <input type="radio" id="local" name="mode" value="local" @onchange="OnModeChanged" checked="@isLocal" />
+            <label for="local">Local Audio</label>
+
+            <input class="ms-3" type="radio" id="youtube" name="mode" value="youtube" @onchange="OnModeChanged" checked="@(!isLocal)" />
+            <label for="youtube">YouTube</label>
+        </div>
+    </div>
+
+    @if (isLocal)
+    {
+        <!-- Local Audio -->
+        <div>
+            <h5>📂 Danh sách nhạc Local</h5>
+            <ul class="list-group">
+                <li class="list-group-item">Study 1.mp3</li>
+                <li class="list-group-item">Prayer 1.mp3</li>
+            </ul>
+
+            <!-- Thanh process -->
+            <input style="width:100%;" type="range" min="0" max="@audioService.Duration" step="0.1"
+                   value="@audioService.CurrentPosition" @oninput="OnSeek" />
+            <div class="text-center small">
+                @TimeSpan.FromSeconds(audioService.CurrentPosition).ToString(@"hh\:mm\:ss")
+                /
+                @TimeSpan.FromSeconds(audioService.Duration).ToString(@"hh\:mm\:ss")
+            </div>
+
+            <!-- Âm lượng -->
+            <div class="mt-3">
+                <label>Âm lượng</label>
+                <input type="range" min="0" max="1" step="0.1" value="@volume" @oninput="OnVolumeChanged" />
+            </div>
+
+            <!-- Nút điều khiển -->
+            <div class="mt-3 d-flex gap-2">
+                <button class="btn btn-success" @onclick="PlayStudySong">▶ Play</button>
+                <button class="btn btn-warning" @onclick="Pause">⏸ Pause</button>
+                <button class="btn btn-danger" @onclick="Stop">⏹ Stop</button>
+                <button class="btn btn-info" @onclick="Next">⏭ Next</button>
+                <button class="btn btn-secondary" @onclick="Previous">⏮ Prev</button>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- YouTube Audio -->
+        <div>
+            <input type="text" class="form-control" placeholder="Dán link YouTube..."
+                   value="@youtubeUrl" @oninput="OnYoutubeInput" />
+
+            @if (!string.IsNullOrEmpty(youtubeTitle))
+            {
+                <div class="card mt-3 shadow-sm">
+                    <img src="@youtubeThumbnail" class="card-img-top" alt="Thumbnail" />
+                    <div class="card-body">
+                        <h6 class="card-title">@youtubeTitle</h6>
+                        <p class="card-text text-muted small">
+                            ⏱ @youtubeDuration.ToString(@"hh\:mm\:ss")
+                        </p>
+                    </div>
+                </div>
+            }
+
+            <!-- Thanh process -->
+            <input style="width:100%;" type="range" min="0" max="@audioService.Duration" step="0.1"
+                   value="@audioService.CurrentPosition" @oninput="OnSeek" />
+            <div class="text-center small">
+                @TimeSpan.FromSeconds(audioService.CurrentPosition).ToString(@"hh\:mm\:ss")
+                /
+                @TimeSpan.FromSeconds(audioService.Duration).ToString(@"hh\:mm\:ss")
+            </div>
+
+            <!-- Âm lượng -->
+            <div class="mt-3">
+                <label>Âm lượng</label>
+                <input type="range" min="0" max="1" step="0.1" value="@volume" @oninput="OnVolumeChanged" />
+            </div>
+
+            <!-- Nút điều khiển -->
+            <div class="mt-3 d-flex gap-2">
+                <button class="btn btn-success" @onclick="PlayYoutube">▶ Play</button>
+                <button class="btn btn-warning" @onclick="Pause">⏸ Pause</button>
+                <button class="btn btn-danger" @onclick="Stop">⏹ Stop</button>
+                <button class="btn btn-info" disabled>⏭ Next</button>
+                <button class="btn btn-secondary" disabled>⏮ Prev</button>
+            </div>
+        </div>
+    }
+
+</div>
+
+@code {
+    double volume = 1.0;
+    private System.Timers.Timer? timer;
+    private System.Timers.Timer? debounceTimer;
+    bool isLocal = true;
+    string youtubeUrl = "";
+    string youtubeTitle = "";
+    string youtubeThumbnail = "";
+    TimeSpan youtubeDuration = TimeSpan.Zero;
+
+    protected override void OnInitialized()
+    {
+        audioService.Stop();
+
+        // Playlist cho Study
+        audioService.SetPlaylist(new List<string>
+        {
+            "wwwroot/audio/Study 1.mp3",
+            "wwwroot/audio/Prayer 1.mp3",
+        });
+
+        timer = new System.Timers.Timer(500);
+        timer.Elapsed += (s, e) => InvokeAsync(StateHasChanged);
+        timer.Start();
+    }
+
+    // Local
+    async Task PlayStudySong()
+    {
+        if (!audioService.IsPlaying)
+            audioService.Play();
+    }
+
+    void Pause() => audioService.Pause();
+    void Stop() => audioService.Stop();
+    void Next() => audioService.Next();
+    void Previous() => audioService.Previous();
+
+    void OnVolumeChanged(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out double v))
+        {
+            volume = v;
+            audioService.SetVolume(v);
+        }
+    }
+
+    void OnSeek(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out var seconds))
+            audioService.Seek(seconds);
+    }
+
+    // YouTube debounce input
+    void OnYoutubeInput(ChangeEventArgs e)
+    {
+        youtubeUrl = e.Value?.ToString() ?? "";
+
+        debounceTimer?.Stop();
+        debounceTimer = new System.Timers.Timer(600); // đợi 600ms
+        debounceTimer.AutoReset = false;
+        debounceTimer.Elapsed += async (s, ev) =>
+        {
+            await InvokeAsync(async () =>
+            {
+                await LoadYoutubeInfo();
+                if (!string.IsNullOrWhiteSpace(youtubeUrl))
+                {
+                    await PlayYoutube(); // 🚀 autoplay luôn sau khi load info
+                }
+            });
+        };
+        debounceTimer.Start();
+    }
+
+    async Task LoadYoutubeInfo()
+    {
+        if (string.IsNullOrWhiteSpace(youtubeUrl))
+        {
+            youtubeTitle = "";
+            youtubeThumbnail = "";
+            youtubeDuration = TimeSpan.Zero;
+        }
+        else
+        {
+            try
+            {
+                var info = await audioService.GetYoutubeInfo(youtubeUrl);
+                youtubeTitle = info.title;
+                youtubeThumbnail = info.thumbnailUrl;
+                youtubeDuration = info.duration;
+            }
+            catch
+            {
+                youtubeTitle = "";
+                youtubeThumbnail = "";
+                youtubeDuration = TimeSpan.Zero;
+            }
+        }
+        StateHasChanged();
+    }
+
+    async Task PlayYoutube()
+    {
+        if (string.IsNullOrWhiteSpace(youtubeUrl))
+            return;
+
+        if (audioService.IsYoutubeLoaded && audioService.CurrentYoutubeUrl == youtubeUrl)
+        {
+            audioService.Play(); // resume
+        }
+        else
+        {
+            await audioService.SetYoutube(youtubeUrl);
+        }
+    }
+
+    // Mode
+    void OnModeChanged(ChangeEventArgs e)
+    {
+        isLocal = e.Value?.ToString() == "local";
+        youtubeUrl = "";
+        audioService.Stop();
+    }
+
+    public void Dispose()
+    {
+        timer?.Stop();
+        timer?.Dispose();
+        debounceTimer?.Dispose();
+    }
+}

@@ -1,0 +1,130 @@
+﻿@page "/bibleTTS"
+@using Microsoft.Maui.Controls
+@inject AudioService audioService
+@using AppBibleNew.Service
+
+<h3>🎤 Nghe Kinh Thánh bằng TTS</h3>
+
+<div class="mb-2">
+    <label>Chọn sách:</label>
+    <select class="form-select" @bind="SelectedBook">
+        <option value="">-- Chọn sách --</option>
+        @foreach (var book in Books)
+        {
+            <option value="@book.Book">@book.Book</option>
+        }
+    </select>
+</div>
+
+<div class="mb-2">
+    <label>Chọn chương:</label>
+    <select class="form-select" @bind="SelectedChapter">
+        <option value="0">-- Chọn chương --</option>
+        @foreach (var ch in Chapters)
+        {
+            <option value="@ch">@ch</option>
+        }
+    </select>
+</div>
+
+<button class="btn btn-primary mb-2" @onclick="PlayTTS">▶ Nghe</button>
+
+<p>@CurrentText</p>
+
+@code {
+    // Models
+    class BibleBook
+    {
+        public string Book { get; set; } = "";
+        public List<ChapterInfo> Chapters { get; set; } = new();
+    }
+
+    class ChapterInfo
+    {
+        public int Chapter { get; set; }
+        public string Text { get; set; } = "";
+    }
+
+    // Data
+    List<BibleBook> Books = new();
+    List<int> Chapters = new();
+
+    // Selected
+    private string _selectedBook = "";
+    string SelectedBook
+    {
+        get => _selectedBook;
+        set
+        {
+            _selectedBook = value;
+            LoadChapters();
+            SelectedChapter = 0;
+            CurrentText = "";
+        }
+    }
+
+    private int _selectedChapter = 0;
+    int SelectedChapter
+    {
+        get => _selectedChapter;
+        set
+        {
+            _selectedChapter = value;
+            LoadChapterText();
+        }
+    }
+
+    string CurrentText = "";
+
+    protected override void OnInitialized()
+    {
+        // Ví dụ JSON sách/chương
+        Books = new List<BibleBook>
+        {
+            new BibleBook
+            {
+                Book="Sáng Thế",
+                Chapters=new List<ChapterInfo>
+                {
+                    new ChapterInfo{Chapter=1, Text="Nel principio Dio creò il cielo e la terra."},
+                    new ChapterInfo{Chapter=2, Text="Ngày thứ hai, Thiên Chúa phân rẽ nước trên trời và nước dưới đất."}
+                }
+            },
+            new BibleBook
+            {
+                Book="Xuất Ê-díp-tô",
+                Chapters=new List<ChapterInfo>
+                {
+                    new ChapterInfo{Chapter=1, Text="Giô-sép bị bán sang Ai Cập."}
+                }
+            }
+        };
+    }
+
+    void LoadChapters()
+    {
+        Chapters = Books.FirstOrDefault(b => b.Book == SelectedBook)?
+                        .Chapters.Select(c => c.Chapter).ToList() ?? new List<int>();
+    }
+
+    void LoadChapterText()
+    {
+        if (string.IsNullOrEmpty(SelectedBook) || SelectedChapter == 0) return;
+
+        var chapter = Books.First(b => b.Book == SelectedBook)
+                           .Chapters.First(c => c.Chapter == SelectedChapter);
+        CurrentText = chapter.Text;
+    }
+
+    async Task PlayTTS()
+    {
+        if (string.IsNullOrEmpty(SelectedBook) || SelectedChapter == 0) return;
+
+        await TextToSpeech.Default.SpeakAsync(CurrentText, new SpeechOptions
+        {
+            Volume = 1.0f,
+            Pitch = 1.0f,
+            Locale = await TextToSpeech.GetLocalesAsync().ContinueWith(locales => locales.Result.FirstOrDefault(l => l.Language.StartsWith("it")))
+        });
+    }
+}

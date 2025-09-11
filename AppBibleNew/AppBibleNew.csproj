@@ -62,6 +62,24 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Remove="Components\Pages\SettingPage\**" />
+      <Compile Remove="Components\Pages\StudyPage\**" />
+      <Compile Remove="Data\**" />
+      <Content Remove="Components\Pages\SettingPage\**" />
+      <Content Remove="Components\Pages\StudyPage\**" />
+      <Content Remove="Data\**" />
+      <EmbeddedResource Remove="Components\Pages\SettingPage\**" />
+      <EmbeddedResource Remove="Components\Pages\StudyPage\**" />
+      <EmbeddedResource Remove="Data\**" />
+      <MauiXaml Remove="Components\Pages\SettingPage\**" />
+      <MauiXaml Remove="Components\Pages\StudyPage\**" />
+      <MauiXaml Remove="Data\**" />
+      <None Remove="Components\Pages\SettingPage\**" />
+      <None Remove="Components\Pages\StudyPage\**" />
+      <None Remove="Data\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Content Remove="Resources\Raw\kinh_thanh_clean.json" />
       <Content Remove="Resources\Raw\Prayer.json" />
       <Content Remove="Resources\Raw\prayers.json" />
@@ -78,12 +96,31 @@
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.100" />
         <PackageReference Include="Plugin.Maui.Audio" Version="4.0.0" />
         <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+        <PackageReference Include="YoutubeExplode" Version="6.5.4" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Components\Pages\SettingPage\" />
-      <Folder Include="Components\Pages\StudyPage\" />
-      <Folder Include="Data\" />
+      <Folder Include="wwwroot\Js\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PRIResource Remove="Data\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PRIResource Remove="Components\Pages\SettingPage\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PRIResource Remove="Components\Pages\StudyPage\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiAsset Include="wwwroot\audio\Audio 1.wav" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\audio\Audio 1.wav" />
     </ItemGroup>
 
 </Project>

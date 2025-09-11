@@ -1,0 +1,107 @@
+﻿@page "/bibleAudio"
+@using AppBibleNew.Service
+@inject AudioService audioService
+
+<div class="container mt-4">
+    <h3>📖 Audio Kinh Thánh</h3>
+
+    <!-- Hiển thị tên bài đang phát -->
+    <div class="alert alert-info mt-2">
+        🎶 Đang phát: <strong>@currentSong</strong>
+    </div>
+
+    <!-- Nút điều khiển -->
+    <div class="d-flex gap-2 mb-3">
+        <button class="btn btn-success" @onclick="PlaySelected">▶ Play</button>
+        <button class="btn btn-warning" @onclick="Pause">⏸ Pause</button>
+        <button class="btn btn-danger" @onclick="Stop">⏹ Stop</button>
+        <button class="btn btn-secondary" @onclick="Next">⏭ Next</button>
+        <button class="btn btn-secondary" @onclick="Previous">⏮ Previous</button>
+    </div>
+
+    <!-- Playlist -->
+    <ul class="list-group">
+        @foreach (var song in playlist)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>@song</span>
+                <button class="btn btn-sm btn-outline-primary" @onclick="() => PlaySong(song)">Phát</button>
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    List<string> playlist = new();
+    string currentSong = "Chưa phát bài nào";
+    int currentIndex = -1;
+
+    protected override void OnInitialized()
+    {
+        // Dừng nhạc study khi vào page này
+        audioService.Stop();
+
+        // --- Load playlist từ folder wwwroot/audio ---
+        // Lưu ý: Plugin.Maui.Audio cần đường dẫn thực
+        var audioFolder = Path.Combine(AppContext.BaseDirectory, "wwwroot", "audio");
+        if (Directory.Exists(audioFolder))
+        {
+            playlist = Directory.GetFiles(audioFolder, "*.*")
+                        .Where(f => f.EndsWith(".wav") || f.EndsWith(".mp3"))
+                        .Select(Path.GetFileName)
+                        .ToList();
+        }
+
+        audioService.SetPlaylist(playlist.Select(f => Path.Combine("wwwroot/audio", f)).ToList());
+
+        if (playlist.Count > 0)
+        {
+            currentIndex = 0;
+            currentSong = playlist[currentIndex];
+        }
+
+        // Lắng nghe sự kiện để cập nhật UI khi vị trí thay đổi
+        audioService.OnPositionChanged += StateHasChanged;
+    }
+
+    async Task PlaySelected()
+    {
+        if (currentIndex >= 0)
+            await audioService.Play(currentIndex);
+    }
+
+    async Task PlaySong(string song)
+    {
+        currentIndex = playlist.IndexOf(song);
+        currentSong = song;
+        await audioService.Play(currentIndex);
+    }
+
+    void Pause() => audioService.Pause();
+
+    void Stop()
+    {
+        audioService.Stop();
+        currentSong = "Đã dừng";
+    }
+
+    void Next()
+    {
+        audioService.Next();
+        if (playlist.Count > 0)
+        {
+            currentIndex = (currentIndex + 1) % playlist.Count;
+            currentSong = playlist[currentIndex];
+        }
+    }
+
+    void Previous()
+    {
+        audioService.Previous();
+        if (playlist.Count > 0)
+        {
+            currentIndex = (currentIndex - 1 + playlist.Count) % playlist.Count;
+            currentSong = playlist[currentIndex];
+        }
+    }
+}

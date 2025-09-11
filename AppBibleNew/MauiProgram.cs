@@ -21,6 +21,8 @@ namespace AppBibleNew
             builder.Services.AddSingleton<IBibleService, BibleService>();
             builder.Services.AddSingleton<IPrayerService, PrayerService>();
             builder.Services.AddSingleton<IRosaryService, RosaryService>();
+            builder.Services.AddSingleton<AudioService>();
+
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
