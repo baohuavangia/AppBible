@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\albertbao\\desktop\\.net\\newapp\\appbiblenew\\appbiblenew\\components\\pages\\prayerpage\\basic.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\basic.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\albertbao\\desktop\\.net\\newapp\\appbiblenew\\appbiblenew\\components\\pages\\prayerpage\\prayers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\prayers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\albertbao\\desktop\\.net\\newapp\\appbiblenew\\appbiblenew\\components\\pages\\prayerpage\\newbie.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\newbie.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\albertbao\\desktop\\.net\\newapp\\appbiblenew\\appbiblenew\\components\\pages\\prayerpage\\mysteries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\mysteries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\albertbao\\desktop\\.net\\newapp\\appbiblenew\\appbiblenew\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 229,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Prayers.razor",
+              "DocumentMoniker": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
+              "ToolTip": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
+              "ViewState": "AgIAABoAAAAAAAAAAAAcwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T16:02:48.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Newbie.razor",
+              "DocumentMoniker": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "ToolTip": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAcwFsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T16:00:36.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "AppBibleNew\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\wwwroot\\index.html",
+              "RelativeToolTip": "AppBibleNew\\wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAwB4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-09-10T15:53:53.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Mysteries.razor",
+              "DocumentMoniker": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "ToolTip": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "ViewState": "AgIAACYAAAAAAAAAAAAiwFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T15:49:18.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Basic.razor",
+              "DocumentMoniker": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "ToolTip": "C:\\Users\\AlbertBao\\Desktop\\.NET\\NewApp\\AppBibleNew\\AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAcwHAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T15:49:12.973Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
