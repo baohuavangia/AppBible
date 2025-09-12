@@ -3,67 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\aaudiotest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\aaudiotest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\studypage\\pomodoro.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\studypage\\pomodoro.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\resources\\raw\\kinh_thanh_clean.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\resources\\raw\\kinh_thanh_clean.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\bibleaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\bibleaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\service\\audioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\service\\audioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\studyaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\studyaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\prayeraudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\prayeraudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\biblepage\\bible.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\biblepage\\bible.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\audioplayer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\audioplayer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\wwwroot\\js\\player.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\wwwroot\\js\\player.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\biblepage\\biblechapter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\biblepage\\biblechapter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\prayerpage\\basic.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\basic.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\audioplayer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\audioplayer.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\prayerpage\\prayers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\prayers.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\aaudiotest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\aaudiotest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\prayerpage\\rosarylist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\rosarylist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\prayerpage\\newbie.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -72,6 +45,50 @@
     {
       "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\prayerpage\\mysteries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\mysteries.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\resources\\raw\\rosaryall.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\resources\\raw\\rosaryall.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\model\\rosarymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\model\\rosarymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\prayerpage\\basic.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\prayerpage\\basic.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\service\\audioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\service\\audioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\biblepage\\bible.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\biblepage\\bible.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\resources\\raw\\prayers.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\resources\\raw\\prayers.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\bibleaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\bibleaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\studyaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\studyaudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\resources\\raw\\kinh_thanh_clean.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\resources\\raw\\kinh_thanh_clean.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\pages\\audio\\prayeraudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\pages\\audio\\prayeraudio.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\appbiblegit\\appbiblenew\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5D31EDBE-EBC0-48E9-AA1B-AC9444DC0145}|AppBibleNew\\AppBibleNew.csproj|solutionrelative:appbiblenew\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -81,51 +98,213 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "player.js",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\Js\\player.js",
-              "RelativeDocumentMoniker": "AppBibleNew\\wwwroot\\Js\\player.js",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\Js\\player.js",
-              "RelativeToolTip": "AppBibleNew\\wwwroot\\Js\\player.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAowBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-09-11T04:03:15.306Z",
-              "IsPinned": true,
+              "DocumentIndex": 0,
+              "Title": "Pomodoro.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\StudyPage\\Pomodoro.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\StudyPage\\Pomodoro.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\StudyPage\\Pomodoro.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\StudyPage\\Pomodoro.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-12T16:10:49.577Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "BibleChapter.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\BiblePage\\BibleChapter.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\BiblePage\\BibleChapter.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\BiblePage\\BibleChapter.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\BiblePage\\BibleChapter.razor",
+              "ViewState": "AgIAANcAAAAAAAAAAAAswPsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-12T15:58:44.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "AppBibleNew\\wwwroot\\css\\app.css",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "AppBibleNew\\wwwroot\\css\\app.css",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-12T15:28:03.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RosaryList.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\RosaryList.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\RosaryList.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\RosaryList.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\RosaryList.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-12T15:00:32.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "AppBibleNew\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\MauiProgram.cs",
+              "RelativeToolTip": "AppBibleNew\\MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T04:14:56.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Mysteries.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAFEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T15:49:18.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Basic.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAowIYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T15:49:12.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Newbie.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAswJUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T16:00:36.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AAudioTest.razor",
               "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\AAudioTest.razor",
               "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\AAudioTest.razor",
               "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\AAudioTest.razor",
               "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\AAudioTest.razor",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAH4AAACOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-11T07:46:03.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "kinh_thanh_clean.json",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
-              "RelativeDocumentMoniker": "AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
-              "RelativeToolTip": "AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-11T06:51:18.714Z",
+              "DocumentIndex": 3,
+              "Title": "AudioPlayer.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T04:00:10.315Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RosaryAll.json",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\RosaryAll.json",
+              "RelativeDocumentMoniker": "AppBibleNew\\Resources\\Raw\\RosaryAll.json",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\RosaryAll.json",
+              "RelativeToolTip": "AppBibleNew\\Resources\\Raw\\RosaryAll.json",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAAALAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-11T16:13:01.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "prayers.json",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\prayers.json",
+              "RelativeDocumentMoniker": "AppBibleNew\\Resources\\Raw\\prayers.json",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\prayers.json",
+              "RelativeToolTip": "AppBibleNew\\Resources\\Raw\\prayers.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-11T16:21:08.633Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T04:05:13.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "AppBibleNew\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\index.html",
+              "RelativeToolTip": "AppBibleNew\\wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-09-10T15:53:53.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AudioService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Service\\AudioService.cs",
+              "RelativeDocumentMoniker": "AppBibleNew\\Service\\AudioService.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Service\\AudioService.cs",
+              "RelativeToolTip": "AppBibleNew\\Service\\AudioService.cs",
+              "ViewState": "AgIAAMsAAAAAAAAAAAA7wOwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T04:38:55.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RosaryModel.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Model\\RosaryModel.cs",
+              "RelativeDocumentMoniker": "AppBibleNew\\Model\\RosaryModel.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Model\\RosaryModel.cs",
+              "RelativeToolTip": "AppBibleNew\\Model\\RosaryModel.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAcwFsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-12T05:08:49.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "Bible.razor",
               "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\BiblePage\\Bible.razor",
               "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\BiblePage\\Bible.razor",
@@ -133,12 +312,35 @@
               "RelativeToolTip": "AppBibleNew\\Components\\Pages\\BiblePage\\Bible.razor",
               "ViewState": "AgIAADAAAAAAAAAAAAAAAEIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T04:50:11.654Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-11T04:50:11.654Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 18,
+              "Title": "StudyAudio.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAqwKgAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T04:39:47.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "BibleAudio.razor",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
+              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
+              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T04:41:52.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "PrayerAudio.razor",
               "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\PrayerAudio.razor",
               "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\PrayerAudio.razor",
@@ -146,90 +348,23 @@
               "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\PrayerAudio.razor",
               "ViewState": "AgIAACEAAAAAAAAAAAAAAE4AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T04:41:59.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-11T04:41:59.44Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BibleAudio.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\BibleAudio.razor",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T04:41:52.093Z",
-              "EditorCaption": ""
+              "DocumentIndex": 19,
+              "Title": "kinh_thanh_clean.json",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
+              "RelativeDocumentMoniker": "AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
+              "RelativeToolTip": "AppBibleNew\\Resources\\Raw\\kinh_thanh_clean.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-11T06:51:18.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StudyAudio.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\StudyAudio.razor",
-              "ViewState": "AgIAAJIAAAAAAAAAAAAqwKgAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T04:39:47.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AudioService.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Service\\AudioService.cs",
-              "RelativeDocumentMoniker": "AppBibleNew\\Service\\AudioService.cs",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Service\\AudioService.cs",
-              "RelativeToolTip": "AppBibleNew\\Service\\AudioService.cs",
-              "ViewState": "AgIAAMsAAAAAAAAAAAAswOwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T04:38:55.854Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "AppBibleNew\\MauiProgram.cs",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\MauiProgram.cs",
-              "RelativeToolTip": "AppBibleNew\\MauiProgram.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T04:14:56.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T04:05:13.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAP4UAAAAAAAAAAAIwBEVAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-09-11T04:52:18.732Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 21,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "AppBibleNew\\Components\\Layout\\MainLayout.razor",
@@ -237,83 +372,7 @@
               "RelativeToolTip": "AppBibleNew\\Components\\Layout\\MainLayout.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T04:12:33.221Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AudioPlayer.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\Audio\\AudioPlayer.razor",
-              "ViewState": "AgIAALUAAAAAAAAAAAAqwNkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T04:00:10.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Prayers.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Prayers.razor",
-              "ViewState": "AgIAABoAAAAAAAAAAAAcwEgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-10T16:02:48.135Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Newbie.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Newbie.razor",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAcwFsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-10T16:00:36.29Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "AppBibleNew\\wwwroot\\index.html",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\wwwroot\\index.html",
-              "RelativeToolTip": "AppBibleNew\\wwwroot\\index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-09-10T15:53:53.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Mysteries.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Mysteries.razor",
-              "ViewState": "AgIAACYAAAAAAAAAAAAiwFQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-10T15:49:18.427Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Basic.razor",
-              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
-              "RelativeDocumentMoniker": "AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
-              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\AppBibleGit\\AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
-              "RelativeToolTip": "AppBibleNew\\Components\\Pages\\PrayerPage\\Basic.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-10T15:49:12.973Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-11T04:12:33.221Z"
             }
           ]
         }

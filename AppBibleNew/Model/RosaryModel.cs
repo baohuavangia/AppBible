@@ -85,6 +85,8 @@ namespace AppBibleNew.Model
 
         [JsonPropertyName("content")]
         public string Content { get; set; } // Nội dung kinh
+        [JsonPropertyName("stepGuide")]
+        public string StepGuide { get; set; } // Nội dung kinh
     }
 
     // ================== Schedule ==================

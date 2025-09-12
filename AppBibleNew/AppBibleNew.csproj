@@ -63,20 +63,10 @@
 
     <ItemGroup>
       <Compile Remove="Components\Pages\SettingPage\**" />
-      <Compile Remove="Components\Pages\StudyPage\**" />
-      <Compile Remove="Data\**" />
       <Content Remove="Components\Pages\SettingPage\**" />
-      <Content Remove="Components\Pages\StudyPage\**" />
-      <Content Remove="Data\**" />
       <EmbeddedResource Remove="Components\Pages\SettingPage\**" />
-      <EmbeddedResource Remove="Components\Pages\StudyPage\**" />
-      <EmbeddedResource Remove="Data\**" />
       <MauiXaml Remove="Components\Pages\SettingPage\**" />
-      <MauiXaml Remove="Components\Pages\StudyPage\**" />
-      <MauiXaml Remove="Data\**" />
       <None Remove="Components\Pages\SettingPage\**" />
-      <None Remove="Components\Pages\StudyPage\**" />
-      <None Remove="Data\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -100,19 +90,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\Js\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PRIResource Remove="Data\**" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PRIResource Remove="Components\Pages\SettingPage\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PRIResource Remove="Components\Pages\StudyPage\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -121,6 +99,10 @@
 
     <ItemGroup>
       <None Include="wwwroot\audio\Audio 1.wav" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Data\" />
     </ItemGroup>
 
 </Project>

@@ -127,72 +127,82 @@
       {
         "step": 1,
         "prayer": "Dấu Thánh Giá",
-        "content": "Dấu Thánh Giá: Trong tên Cha, Con, Thánh Thần..."
+        "content": "Dấu Thánh Giá: Nhân danh Cha và Con và Thánh Thần. Amen",
+        "stepGuide":  "1"
+
       },
       {
         "step": 2,
         "prayer": "Kinh Tin Kính",
-        "content": "Kinh Tin Kính: Tôi tin kính Thiên Chúa..."
+        "content": "Kinh Tin Kính: Tôi tin kính Đức Chúa Trời, là Cha phép tắc vô cùng dựng nên trời đất.Tôi tin kính Đức Chúa Giêsu Kitô là Con Một Đức Chúa Cha, cùng là Chúa chúng tôi, bởi phép Đức Chúa Thánh Thần mà Người xuống thai sinh bởi Bà Maria Đồng Trinh, chịu nạn đời quan Phongxiô Philatô, chịu đóng đanh trên cây Thánh giá, chết và táng xác, xuống ngục tổ tông, ngày thứ ba bởi trong kẻ chết mà sống lại, lên trời ngự bên hữu Đức Chúa Cha phép tắc vô cùng, ngày sau bởi trời lại xuống phán xét kẻ sống và kẻ chết.Tôi tin kính Đức Chúa Thánh Thần. Tôi tin có Hội Thánh hằng có ở khắp thế này, các thánh thông công. Tôi tin phép tha tội. Tôi tin xác loài người ngày sau sống lại. Tôi tin hằng sống vậy. Amen.",
+        "stepGuide": "1"
       },
       {
         "step": 3,
         "prayer": "Kinh Lạy Cha",
-        "content": "Kinh Lạy Cha: Lạy Cha chúng con..."
+        "content": "Kinh Lạy Cha: Lạy Cha chúng con ở trên trời, chúng con nguyện danh Cha cả sáng, Nước Cha trị đến, ý Cha thể hiện dưới đất cũng như trên trời. Xin Cha cho chúng con hôm nay lương thực hàng ngày, và tha nợ chúng con như chúng con cũng tha kẻ có nợ chúng con; xin chớ để chúng con sa chước cám dỗ, nhưng cứu chúng con cho khỏi sự dữ. Amen.",
+        "stepGuide": "2"
       },
       {
         "step": 4,
         "prayer": "3 Kinh Kính Mừng (kính Đức Tin, Cậy, Mến)",
-        "content": "Kinh Kính Mừng: đầy ơn phúc Maria..."
+        "content": "Kinh Kính Mừng: Kính mừng Maria đầy ơn phúc, Đức Chúa Trời ở cùng Bà, Bà có phúc lạ hơn mọi người nữ, và Giêsu Con lòng Bà gồm phúc lạ. Thánh Maria Đức Mẹ Chúa Trời, cầu cho chúng con là kẻ có tội, khi nay và trong giờ lâm tử. Amen.",
+        "stepGuide": "3"
       },
       {
         "step": 5,
         "prayer": "Kinh Sáng Danh",
-        "content": "Kinh Sáng Danh: Sáng danh Cha..."
+        "content": "Kinh Sáng Danh: Sáng danh Đức Chúa Cha và Đức Chúa Con và Đức Chúa Thánh Thần. Như đã có trước vô cùng, và bây giờ, và hằng có, và đời đời chẳng cùng. Amen.",
+        "stepGuide": "4"
       }
     ],
     "decade": [
       {
         "step": 1,
         "prayer": "Xướng mầu nhiệm",
-        "content": ""
+        "content": "Ngắm Mầu Nhiệm Thứ Nhất",
+        "stepGuide": "5"
       },
       {
         "step": 2,
         "prayer": "Kinh Lạy Cha",
-        "content": "Kinh Lạy Cha: Lạy Cha chúng con..."
+        "content": "Kinh Lạy Cha: Lạy Cha chúng con ở trên trời, chúng con nguyện danh Cha cả sáng, Nước Cha trị đến, ý Cha thể hiện dưới đất cũng như trên trời. Xin Cha cho chúng con hôm nay lương thực hàng ngày, và tha nợ chúng con như chúng con cũng tha kẻ có nợ chúng con; xin chớ để chúng con sa chước cám dỗ, nhưng cứu chúng con cho khỏi sự dữ. Amen.",
+        "stepGuide": "5"
+
       },
       {
         "step": 3,
         "prayer": "10 Kinh Kính Mừng",
-        "content": "Kinh Kính Mừng: đầy ơn phúc Maria..."
+        "content": "Kinh Kính Mừng: Kính mừng Maria đầy ơn phúc, Đức Chúa Trời ở cùng Bà, Bà có phúc lạ hơn mọi người nữ, và Giêsu Con lòng Bà gồm phúc lạ. Thánh Maria Đức Mẹ Chúa Trời, cầu cho chúng con là kẻ có tội, khi nay và trong giờ lâm tử. Amen.",
+        "stepGuide": "6"
       },
       {
         "step": 4,
         "prayer": "Kinh Sáng Danh",
-        "content": "Kinh Sáng Danh: Sáng danh Cha..."
+        "content": "Kinh Sáng Danh: Sáng danh Đức Chúa Cha và Đức Chúa Con và Đức Chúa Thánh Thần. Như đã có trước vô cùng, và bây giờ, và hằng có, và đời đời chẳng cùng. Amen.",
+        "stepGuide": "7"
       },
       {
         "step": 5,
         "prayer": "Lời Fatima (tùy chọn)",
-        "content": "Lời Fatima: ..."
+        "content": "Lời Fatima: Lạy Chúa Giêsu, xin tha tội cho chúng con, xin cứu chúng con khỏi sa hỏa ngục, xin đem các linh hồn lên Thiên Đàng, nhất là những linh hồn cần đến lòng Chúa thương xót hơn.",
+        "stepGuide": "7"
       }
     ],
     "conclusion": [
       {
         "step": 1,
+        "prayer": "Lặp lại các bước 5, 6, 7",
+        "content": "Mầu Nhiệm -> Kinh Lạy Cha -> 10 Kinh Kính Mừng -> Kinh Sáng Danh -> Lời Nguyện Fatima",
+        "stepGuide": "8"
+      },
+      {
+        "step": 1,
         "prayer": "Kinh Lạy Nữ Vương",
-        "content": "Kinh Lạy Nữ Vương: ..."
-      },
-      {
-        "step": 2,
-        "prayer": "Kinh Truyền Tin (tùy giờ)",
-        "content": "Kinh Truyền Tin: ..."
-      },
-      {
-        "step": 3,
-        "prayer": "Kinh Cầu Cho Đức Giáo Hoàng",
-        "content": "Kinh Cầu Cho Đức Giáo Hoàng: ..."
+        "content": "Kinh Lạy Nữ Vương: Lạy Nữ Vương Mẹ nhân lành làm cho chúng con được sống, được vui, được cậy, thân lạy Mẹ. Chúng con con cháu Evà ở chốn khách đầy, kêu đến cùng Bà, chúng con ở nơi khóc lóc than thở kêu khẩn Bà thương. Hỡi ôi! Bà là Chúa bầu chúng con, xin ghé mặt thương xem chúng con. Đến sau khỏi đầy, xin cho chúng con được thấy Đức Chúa Giêsu Con lòng Bà gồm phúc lạ. Ôi! Khoan thay! Nhân thay! Dịu thay! Thánh Maria trọn đời đồng trinh. Amen.",
+        "stepGuide": "9"
       }
+
     ]
   },
 

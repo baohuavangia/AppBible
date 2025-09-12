@@ -1,59 +1,40 @@
 ﻿@page "/Prayer/RosaryList"
 @inject NavigationManager Navigation
-<div>
-    <div class="row p-0" style="width: 60%; margin: auto;">
-        <div class="row p-0 m-1">
-            <div class="col-6">
 
-                <div @onclick="GoNewbie" class="card card-hover" style="width:100%;">
-                        <img class="card-img-top" src="prayer_picture.png" />
-                        <div class="overlay"></div>
-                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                            <h4 class="card-title text-white fs-4">Hướng Dẫn Lần Hạt Mân Côi</h4>
-                        </div>
-                    </div>
-                
-            </div>
-            <div class="col-6">
+<div class="d-flex flex-column align-items-center gap-3" style="width: 70%; margin:auto;">
 
-                <div @onclick="GoMysteries" class="card card-hover" style="width:100%;">
-                        <img class="card-img-top" src="prayer_picture.png" />
-                        <div class="overlay"></div>
-                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                            <h4 class="card-title text-white fs-4">Các Màu Nhiệm</h4>
-                        </div>
-                    </div>
-                
-            </div>
-        </div>
-
-        <!-- Boxes 4 & 5 -->
-        <div class="row p-0 m-1">
-            <div class="col-6">
-
-                <div @onclick="GoPrayers" class="card card-hover" style="width:100%;">
-                        <img class="card-img-top" src="prayer_picture.png" />
-                        <div class="overlay"></div>
-                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                            <h4 class="card-title text-white fs-4">Các Kinh Mân Côi</h4>
-                        </div>
-                    </div>
-                
-            </div>
-            <div class="col-6">
-
-                <div @onclick="GoBasic" class="card card-hover" style="width:100%;">
-                        <img class="card-img-top" src="prayer_picture.png" />
-                        <div class="overlay"></div>
-                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                            <h4 class="card-title text-white fs-4">Cầu Nguyện Mân Côi</h4>
-                        </div>
-                    </div>
-                
+    <div class="col-8">
+        <div @onclick="GoNewbie" class="card card-hover" style="width:100%;">
+            <img class="card-img-top" src="Image/prayer_picture.png" />
+            <div class="overlay"></div>
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                <h4 class="card-title text-white fs-4">Hướng Dẫn Lần Hạt Mân Côi</h4>
             </div>
         </div>
     </div>
+
+    <div class="col-8">
+        <div @onclick="GoMysteries" class="card card-hover" style="width:100%;">
+            <img class="card-img-top" src="Image/prayer_picture.png" />
+            <div class="overlay"></div>
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                <h4 class="card-title text-white fs-4">Các Mầu Nhiệm</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div @onclick="GoBasic" class="card card-hover" style="width:100%;">
+            <img class="card-img-top" src="Image/prayer_picture.png" />
+            <div class="overlay"></div>
+            <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                <h4 class="card-title text-white fs-4">Cầu Nguyện Mân Côi</h4>
+            </div>
+        </div>
+    </div>
+
 </div>
+
 <style>
     .card-img-top {
         object-fit: cover;
@@ -75,6 +56,7 @@
     .card-hover {
         overflow: hidden;
         position: relative;
+        cursor: pointer;
     }
 
         .card-hover:hover .card-img-top {
@@ -82,10 +64,8 @@
         }
 </style>
 
-
 @code {
     private void GoNewbie() => Navigation.NavigateTo("/Rosary/Newbie");
     private void GoMysteries() => Navigation.NavigateTo("/Rosary/Mysteries");
-    private void GoPrayers() => Navigation.NavigateTo("/Rosary/Prayers");
     private void GoBasic() => Navigation.NavigateTo("/Rosary/Basic");
 }
