@@ -95,3 +95,6 @@ h1:focus {
     padding: 1rem;
     border-right: 1px solid #ddd;
 }
+.active {
+    background-color: #d0d0d0 !important;
+}

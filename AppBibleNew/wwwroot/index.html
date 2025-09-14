@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="AppBibleNew.styles.css" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="lib/summernote-lite.min.css" rel="stylesheet">
+    <link href="lib/quill/quill.snow.css" rel="stylesheet">
     <link rel="icon" href="data:,">
 </head>
 
@@ -25,6 +26,45 @@
     </div>
     <script src="_framework/blazor.webview.js" autostart="false"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="lib/summernote-lite.min.js"></script>
+    <script src="lib/quill/quill.min.js"></script>
+    <script>
+        let quill;
+
+        window.initEditor = function (content) {
+            setTimeout(() => {
+                if (!quill) {
+                    quill = new Quill('#editor', {
+                        theme: 'snow',
+                        modules: {
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],
+                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                ['clean']
+                            ]
+                        }
+                    });
+                }
+                quill.root.innerHTML = content || "";
+            }, 100);
+        }
+
+        window.getEditorContent = function () {
+            return quill ? quill.root.innerHTML : "";
+        }
+    </script>
+    <script>
+        window.formatEditor = (cmd) => document.execCommand(cmd, false, null);
+        window.queryCommandState = (cmd) => document.queryCommandState(cmd);
+        window.getEditorContent = () => document.getElementById('editor').innerHTML;
+        window.setEditorContent = (html) => document.getElementById('editor').innerHTML = html;
+        window.clearEditor = () => document.getElementById('editor').innerHTML = '';
+    </script>
+
+
+
+
 
 
 </body>

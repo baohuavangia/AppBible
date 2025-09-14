@@ -1,0 +1,115 @@
+﻿@page "/notes"
+@using AppBibleNew.Model
+@using AppBibleNew.Service
+@inject NoteService NoteService
+@inject IJSRuntime JS
+
+<h3>📝 Notes</h3>
+
+<input class="form-control mb-2" placeholder="Tiêu đề" @bind="Current.Title" />
+
+<!-- 🖋 Thanh công cụ -->
+<div class="btn-group mb-2">
+    <button class="btn btn-light @(BoldActive ? "active" : "")" @onclick="Bold"><b>B</b></button>
+    <button class="btn btn-light @(ItalicActive ? "active" : "")" @onclick="Italic"><i>I</i></button>
+    <button class="btn btn-light @(UnderlineActive ? "active" : "")" @onclick="Underline"><u>U</u></button>
+    <button class="btn btn-light @(BulletActive ? "active" : "")" @onclick="Bullet">• List</button>
+    <button class="btn btn-light @(NumberActive ? "active" : "")" @onclick="Number">1. List</button>
+</div>
+
+<!-- ✍️ Trình soạn thảo -->
+<div id="editor"
+     class="form-control border p-2 mb-2"
+     contenteditable="true"
+     @onmouseup="UpdateToolbarState"
+     @onkeyup="UpdateToolbarState"
+     style="min-height:150px; border-radius:5px;">
+</div>
+
+<button class="btn btn-primary" @onclick="SaveNote">
+    @(Current.Id == 0 ? "💾 Lưu" : "💾 Cập nhật")
+</button>
+<button class="btn btn-secondary ms-2" @onclick="NewNote">📝 Tạo mới</button>
+
+<hr />
+
+<!-- 📋 Danh sách Note -->
+@foreach (var note in Notes)
+{
+    <div class="card my-2">
+        <div class="card-body">
+            <h5>@note.Title</h5>
+            <div>@((MarkupString)note.Content)</div>
+            <small class="text-muted">@note.CreatedAt</small>
+            <div class="mt-2">
+                <button class="btn btn-sm btn-success" @onclick="() => EditNote(note)">✏ Sửa</button>
+                <button class="btn btn-sm btn-danger ms-2" @onclick="() => DeleteNote(note.Id)">🗑 Xóa</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<Note> Notes = new();
+    private Note Current = new() { CreatedAt = DateTime.Now };
+
+    private bool BoldActive, ItalicActive, UnderlineActive, BulletActive, NumberActive;
+
+    protected override void OnInitialized()
+    {
+        Notes = NoteService.GetAll();
+    }
+
+    async Task SaveNote()
+    {
+        var content = await JS.InvokeAsync<string>("getEditorContent");
+        Current.Content = content;
+
+        NoteService.Save(Current);
+        Notes = NoteService.GetAll();
+
+        Current = new Note { CreatedAt = DateTime.Now };
+        await JS.InvokeVoidAsync("clearEditor");
+        StateHasChanged();
+    }
+
+    void DeleteNote(int id)
+    {
+        NoteService.Delete(id);
+        Notes = NoteService.GetAll();
+    }
+
+    async Task EditNote(Note note)
+    {
+        Current = note;
+        await JS.InvokeVoidAsync("setEditorContent", note.Content);
+    }
+
+    void NewNote()
+    {
+        Current = new Note { CreatedAt = DateTime.Now };
+        JS.InvokeVoidAsync("clearEditor");
+    }
+
+    async Task Bold() => await Format("bold");
+    async Task Italic() => await Format("italic");
+    async Task Underline() => await Format("underline");
+    async Task Bullet() => await Format("insertUnorderedList");
+    async Task Number() => await Format("insertOrderedList");
+
+    async Task Format(string cmd)
+    {
+        await JS.InvokeVoidAsync("formatEditor", cmd);
+        await UpdateToolbarState();
+    }
+
+    async Task UpdateToolbarState()
+    {
+        BoldActive = await JS.InvokeAsync<bool>("queryCommandState", "bold");
+        ItalicActive = await JS.InvokeAsync<bool>("queryCommandState", "italic");
+        UnderlineActive = await JS.InvokeAsync<bool>("queryCommandState", "underline");
+        BulletActive = await JS.InvokeAsync<bool>("queryCommandState", "insertUnorderedList");
+        NumberActive = await JS.InvokeAsync<bool>("queryCommandState", "insertOrderedList");
+        StateHasChanged();
+    }
+}
