@@ -1,83 +1,319 @@
-﻿@page "/bibleAudio"
+﻿@page "/bibleAudio/{bookFolder?}/{chapter:int?}"
+@using System.Text.Json
 @using AppBibleNew.Service
 @inject AudioService audioService
 
-<div class="container mt-4">
-    <h3>📖 Audio Kinh Thánh</h3>
+<style>
+    #none-forcus {
+        outline: none;
+        background-color: transparent;
+    }
 
-    <!-- Hiển thị tên bài đang phát -->
-    <div class="alert alert-info mt-2">
-        🎶 Đang phát: <strong>@currentSong</strong>
-    </div>
-
-    <!-- Nút điều khiển -->
-    <div class="d-flex gap-2 mb-3">
-        <button class="btn btn-success" @onclick="PlaySelected">▶ Play</button>
-        <button class="btn btn-warning" @onclick="Pause">⏸ Pause</button>
-        <button class="btn btn-danger" @onclick="Stop">⏹ Stop</button>
-        <button class="btn btn-secondary" @onclick="Next">⏭ Next</button>
-        <button class="btn btn-secondary" @onclick="Previous">⏮ Previous</button>
-    </div>
-
-    <!-- Playlist -->
-    <ul class="list-group">
-        @foreach (var song in playlist)
-        {
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span>@song</span>
-                <button class="btn btn-sm btn-outline-primary" @onclick="() => PlaySong(song)">Phát</button>
-            </li>
+        #none-forcus:focus {
+            box-shadow: none;
         }
-    </ul>
+
+    .vertical-slider {
+        -webkit-appearance: none;
+        width: 100px;
+        height: 5px;
+        margin-top: 20px;
+        background: linear-gradient( to right, #007bff 0%, #007bff @(volume * 100) %, #ccc @(volume * 100) %, #ccc 100% );
+        border-radius: 4px;
+    }
+
+        .vertical-slider::-webkit-slider-thumb,
+        .vertical-slider::-moz-range-thumb {
+            width: 0px;
+            height: 0px;
+            background: #007bff;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+    .bg-box {
+        position: relative;
+        min-height: 20vh; /* hoặc chiều cao bạn muốn */
+        border-radius: 1vh;
+        box-shadow: 0 0 10px rgb(0,0,0,0.6);
+    }
+
+    .bg-overlay {
+        background: rgba(0,0,0,0.6); /* lớp mờ giúp chữ sáng hơn */
+        color: #fff;
+        border-radius: 1vh;
+    }
+
+    .player-container {
+        max-width: 40vw;
+    }
+
+    .select-bottom-border {
+        border: none; /* bỏ toàn bộ viền */
+        border-bottom: 1px solid black; /* chỉ tạo viền dưới */
+        border-radius: 0; /* loại bỏ bo góc */
+        padding: 1vh; /* khoảng cách nội dung */
+        background-color: transparent; /* nền trong suốt */
+        outline: none; /* bỏ outline khi focus */
+        transition: border-color 0.3s; /* hiệu ứng khi hover/focus */
+    }
+
+        /* khi focus đổi màu viền dưới */
+        .select-bottom-border:focus {
+            border-bottom-color: black;
+        }
+
+    .fullscreen-center {
+        display: flex;
+        justify-content: center; /* căn giữa ngang */
+        align-items: center; /* căn giữa dọc */
+        width: 100%;
+        height: 80vh; /* chiếm toàn màn hình theo chiều cao */
+    }
+</style>
+
+<div class="fullscreen-center" style="width:100%;">
+    <div class="container mt-4 player-container">
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <select class="form-select select-bottom-border"
+                            @onchange="OnBookChanged">
+                        <option value="">-- Chọn Sách --</option>
+                        @foreach (var b in allBooks)
+                        {
+                            <option value="@b.Book">@($"{b.Bible} - {b.Book}")</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <select class="form-select select-bottom-border"
+                            @onchange="async e => await OnChapterChanged(e)"
+                            disabled="@(selectedBook == null)"
+                            value="@selectedChapter">
+                        <option value="">-- Chọn Chương --</option>
+                        @if (selectedBook != null)
+                        {
+                            @for (int i = 1; i <= selectedBook.TotalChapters; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        @* --- MyPlayer.razor --- *@
+        <div class="border bg-box"
+             style="background-image:url('@currentImage');
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;">
+
+            <!-- Lớp phủ để nội dung nổi bật -->
+            <div class="bg-overlay p-3 d-flex justify-content-center align-items-center " style="min-height:35vh">
+                <div style="width:100%;">
+                    <!-- Thông tin đang phát -->
+                    <div class="text-center mb-3">
+                        🎶 <h2><strong>@currentSong</strong></h2>
+                    </div>
+                    <!-- Thanh tiến trình -->
+                    <input style="width:100%;" type="range"
+                           min="0" max="@durationSeconds" step="0.1"
+                           value="@currentSeconds" @oninput="OnSeek" />
+                    <div class="text-center small mb-3">
+                        @TimeSpan.FromSeconds(currentSeconds).ToString(@"mm\:ss")
+                        /
+                        @TimeSpan.FromSeconds(durationSeconds).ToString(@"mm\:ss")
+                    </div>
+                    <!-- Điều khiển -->
+                    <div class="row mt-3">
+                        <div class="col-3 d-flex justify-content-center align-items-center">
+                            <div class="col-3 d-flex align-items-center gap-2">
+                                <span class="volume-icon">🔊</span>
+                                <input type="range" min="0" max="1" step="0.01"
+                                       value="@volume"
+                                       @oninput="OnVolumeChanged"
+                                       class="volume-slider" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex justify-content-center align-items-center gap-3">
+                                <button class=" text-light btn rounded-circle" id="none-forcus" @onclick="Previous">⏮</button>
+                                <button class=" text-light btn rounded-circle border"
+                                        id="none-forcus"
+                                        style="width:4vw;height:4vw;"
+                                        @onclick="TogglePlayPause">
+                                    @if (audioService.IsPlaying)
+                                    {
+                                        <span class="text-light">⏸</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-light">▶</span>
+                                    }
+                                </button>
+                                <button class=" text-light btn rounded-circle" id="none-forcus" @onclick="Next">⏭</button>
+                            </div>
+                        </div>
+                        <div class="col-3 text-center">
+                            <button class="btn btn-outline-danger mt-3" id="none-forcus" @onclick="Stop">⏹</button>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end overlay -->
+        </div>
+
+    </div>
 </div>
 
 @code {
-    List<string> playlist = new();
-    string currentSong = "Chưa phát bài nào";
-    int currentIndex = -1;
+    [Parameter] public string? bookFolder { get; set; }
+    [Parameter] public int? chapter { get; set; }
 
-    protected override void OnInitialized()
+    class BibleBook
     {
-        // Dừng nhạc study khi vào page này
+        public string Bible { get; set; } = "";
+        public string Book { get; set; } = "";
+        public string Folder { get; set; } = "";
+        public int TotalChapters { get; set; }
+    }
+
+    List<BibleBook> allBooks = new();
+    BibleBook? selectedBook;
+    int selectedChapter = 0;
+    string currentSong = "Chưa phát";
+
+    double currentSeconds => Math.Min(audioService.CurrentPosition, durationSeconds);
+    double durationSeconds => audioService.Duration;
+    double volume = 1.0;
+
+    // Danh sách ảnh & ảnh hiện tại
+    List<string> bgImages = new();
+    string currentImage = "";
+    bool dataLoaded = false;
+
+    void LoadRandomImage()
+    {
+        if (bgImages.Count == 0) return;
+        var rnd = new Random();
+        currentImage = bgImages[rnd.Next(bgImages.Count)];
+        InvokeAsync(StateHasChanged); // cập nhật UI ngay
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
         audioService.Stop();
 
-        // --- Load playlist từ folder wwwroot/audio ---
-        // Lưu ý: Plugin.Maui.Audio cần đường dẫn thực
-        var audioFolder = Path.Combine(AppContext.BaseDirectory, "wwwroot", "audio");
-        if (Directory.Exists(audioFolder))
+        // Load danh sách ảnh
+        var imgFolder = Path.Combine(AppContext.BaseDirectory, "wwwroot", "images", "bibleaudiobg");
+        if (Directory.Exists(imgFolder))
         {
-            playlist = Directory.GetFiles(audioFolder, "*.*")
-                        .Where(f => f.EndsWith(".wav") || f.EndsWith(".mp3"))
-                        .Select(Path.GetFileName)
-                        .ToList();
+            bgImages = Directory.GetFiles(imgFolder, "*.*")
+                                .Where(f => f.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase)
+                                         || f.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                                .Select(f => "/images/bibleaudiobg/" + Path.GetFileName(f)) // ✅ thêm /
+                                .ToList();
+            LoadRandomImage();
         }
 
-        audioService.SetPlaylist(playlist.Select(f => Path.Combine("wwwroot/audio", f)).ToList());
-
-        if (playlist.Count > 0)
+        // Load JSON sách
+        var jsonPath = Path.Combine(AppContext.BaseDirectory, "wwwroot", "bible_books_audio.json");
+        if (File.Exists(jsonPath))
         {
-            currentIndex = 0;
-            currentSong = playlist[currentIndex];
+            var json = await File.ReadAllTextAsync(jsonPath);
+            using var doc = JsonDocument.Parse(json);
+            foreach (var group in doc.RootElement.EnumerateArray())
+            {
+                var bible = group.GetProperty("bible").GetString() ?? "";
+                foreach (var b in group.GetProperty("books").EnumerateArray())
+                {
+                    allBooks.Add(new BibleBook
+                    {
+                        Bible = bible,
+                        Book = b.GetProperty("book").GetString() ?? "",
+                        Folder = b.GetProperty("folder").GetString() ?? "",
+                        TotalChapters = b.GetProperty("totalChapters").GetInt32()
+                    });
+                }
+            }
         }
+        dataLoaded = true;
 
-        // Lắng nghe sự kiện để cập nhật UI khi vị trí thay đổi
-        audioService.OnPositionChanged += StateHasChanged;
+        // Update UI + auto next
+        audioService.OnPositionChanged += () =>
+        {
+            InvokeAsync(StateHasChanged);
+            if (audioService.Duration > 0 &&
+                audioService.CurrentPosition >= audioService.Duration - 0.5)
+            {
+                AutoNext();
+            }
+        };
+
+        volume = audioService.Volume;
     }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (dataLoaded && !string.IsNullOrEmpty(bookFolder))
+        {
+            var book = allBooks.FirstOrDefault(x =>
+                x.Folder.Equals(bookFolder, StringComparison.OrdinalIgnoreCase));
+            if (book != null)
+            {
+                selectedBook = book;
+                selectedChapter = chapter ?? 1;
+                await PlaySelected();
+            }
+        }
+    }
+
+    void OnBookChanged(ChangeEventArgs e)
+    {
+        var name = e.Value?.ToString();
+        selectedBook = allBooks.FirstOrDefault(b => b.Book == name);
+        selectedChapter = 0;
+        currentSong = "Chưa phát";
+        audioService.Stop();
+    }
+
+    async Task OnChapterChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out selectedChapter))
+        {
+            currentSong = $"{bookFolder} {selectedChapter}";
+            audioService.Stop();
+            await PlaySelected(); // ✅ bây giờ await được
+        }
+    }
+
 
     async Task PlaySelected()
     {
-        if (currentIndex >= 0)
-            await audioService.Play(currentIndex);
+        if (selectedBook == null || selectedChapter <= 0) return;
+        var relative = Path.Combine("wwwroot", "audio", "AudioBible",
+                                    selectedBook.Folder,
+                                    $"Chuong{selectedChapter}.mp3");
+        if (!File.Exists(Path.Combine(AppContext.BaseDirectory, relative)))
+        {
+            currentSong = "Không tìm thấy file audio";
+            return;
+        }
+        audioService.SetPlaylist(new List<string> { relative });
+        currentSong = $"{selectedBook.Book} - Chương {selectedChapter}";
+        await audioService.Play(0);
+        LoadRandomImage(); // đổi ảnh khi phát chương mới
     }
 
-    async Task PlaySong(string song)
+    void TogglePlayPause()
     {
-        currentIndex = playlist.IndexOf(song);
-        currentSong = song;
-        await audioService.Play(currentIndex);
+        if (audioService.IsPlaying) audioService.Pause();
+        else audioService.Play();
     }
-
-    void Pause() => audioService.Pause();
 
     void Stop()
     {
@@ -85,23 +321,46 @@
         currentSong = "Đã dừng";
     }
 
-    void Next()
+    async void Next()
     {
-        audioService.Next();
-        if (playlist.Count > 0)
+        if (!dataLoaded || selectedBook == null) return;
+        if (selectedChapter < selectedBook.TotalChapters)
         {
-            currentIndex = (currentIndex + 1) % playlist.Count;
-            currentSong = playlist[currentIndex];
+            selectedChapter++;
+            await PlaySelected();
+        }
+    }
+    async void Previous()
+    {
+        if (!dataLoaded || selectedBook == null) return;
+        if (selectedChapter > 1)
+        {
+            selectedChapter--;
+            await PlaySelected();
+        }
+    }
+    async void AutoNext()
+    {
+        if (!dataLoaded || selectedBook == null) return;
+        if (selectedChapter < selectedBook.TotalChapters)
+        {
+            selectedChapter++;
+            await PlaySelected();
         }
     }
 
-    void Previous()
+    void OnSeek(ChangeEventArgs e)
     {
-        audioService.Previous();
-        if (playlist.Count > 0)
+        if (double.TryParse(e.Value?.ToString(), out var s))
+            audioService.Seek(s);
+    }
+
+    void OnVolumeChanged(ChangeEventArgs e)
+    {
+        if (double.TryParse(e.Value?.ToString(), out var v))
         {
-            currentIndex = (currentIndex - 1 + playlist.Count) % playlist.Count;
-            currentSong = playlist[currentIndex];
+            volume = Math.Clamp(v, 0, 1);
+            audioService.SetVolume(volume);
         }
     }
 }

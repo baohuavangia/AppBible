@@ -1,0 +1,377 @@
+[
+  {
+    "bible": "Cựu Ước",
+    "books": [
+      {
+        "book": "Sáng Thế",
+        "folder": "SangThe",
+        "totalChapters": 50
+      },
+      {
+        "book": "Xuất Hành",
+        "folder": "XuatHanh",
+        "totalChapters": 40
+      },
+      {
+        "book": "Lêvi",
+        "folder": "Levi",
+        "totalChapters": 27
+      },
+      {
+        "book": "Dân Số",
+        "folder": "DanSo",
+        "totalChapters": 36
+      },
+      {
+        "book": "Đệ Nhị Luật",
+        "folder": "DeNhiLuat",
+        "totalChapters": 34
+      },
+      {
+        "book": "Giôsuê",
+        "folder": "Giosue",
+        "totalChapters": 24
+      },
+      {
+        "book": "Thủ Lãnh",
+        "folder": "ThuLanh",
+        "totalChapters": 21
+      },
+      {
+        "book": "Rút",
+        "folder": "Rut",
+        "totalChapters": 4
+      },
+      {
+        "book": "Samuel I",
+        "folder": "SamuelI",
+        "totalChapters": 31
+      },
+      {
+        "book": "Samuel II",
+        "folder": "SamuelII",
+        "totalChapters": 24
+      },
+      {
+        "book": "Các Vua I",
+        "folder": "CacVuaI",
+        "totalChapters": 22
+      },
+      {
+        "book": "Các Vua II",
+        "folder": "CacVuaII",
+        "totalChapters": 25
+      },
+      {
+        "book": "Sử Biên Niên I",
+        "folder": "SuBienNienI",
+        "totalChapters": 29
+      },
+      {
+        "book": "Sử Biên Niên II",
+        "folder": "SuBienNienII",
+        "totalChapters": 36
+      },
+      {
+        "book": "Êtra",
+        "folder": "Etra",
+        "totalChapters": 10
+      },
+      {
+        "book": "Nơkhemia",
+        "folder": "Nokhemia",
+        "totalChapters": 13
+      },
+      {
+        "book": "Tôbia",
+        "folder": "Tobia",
+        "totalChapters": 14
+      },
+      {
+        "book": "Giuđitha",
+        "folder": "Giuitha",
+        "totalChapters": 16
+      },
+      {
+        "book": "Étte",
+        "folder": "Ette",
+        "totalChapters": 10
+      },
+      {
+        "book": "Macabê I",
+        "folder": "MacabeI",
+        "totalChapters": 16
+      },
+      {
+        "book": "Macabê II",
+        "folder": "MacabeII",
+        "totalChapters": 15
+      },
+      {
+        "book": "Gióp",
+        "folder": "Giop",
+        "totalChapters": 42
+      },
+      {
+        "book": "Thánh Vịnh",
+        "folder": "ThanhVinh",
+        "totalChapters": 150
+      },
+      {
+        "book": "Châm Ngôn",
+        "folder": "ChamNgon",
+        "totalChapters": 31
+      },
+      {
+        "book": "Giảng Viên",
+        "folder": "GiangVien",
+        "totalChapters": 12
+      },
+      {
+        "book": "Diễm Ca",
+        "folder": "DiemCa",
+        "totalChapters": 8
+      },
+      {
+        "book": "Khôn Ngoan",
+        "folder": "KhonNgoan",
+        "totalChapters": 19
+      },
+      {
+        "book": "Huấn Ca",
+        "folder": "HuanCa",
+        "totalChapters": 51
+      },
+      {
+        "book": "Isaia",
+        "folder": "Isaia",
+        "totalChapters": 66
+      },
+      {
+        "book": "Giêrêmia",
+        "folder": "Gieremia",
+        "totalChapters": 52
+      },
+      {
+        "book": "Ai Ca",
+        "folder": "AiCa",
+        "totalChapters": 5
+      },
+      {
+        "book": "Baruc",
+        "folder": "Baruc",
+        "totalChapters": 6
+      },
+      {
+        "book": "Êdêkien",
+        "folder": "Edekien",
+        "totalChapters": 48
+      },
+      {
+        "book": "Đanien",
+        "folder": "Danien",
+        "totalChapters": 14
+      },
+      {
+        "book": "Hôsê",
+        "folder": "Hose",
+        "totalChapters": 14
+      },
+      {
+        "book": "Giôen",
+        "folder": "Gioen",
+        "totalChapters": 4
+      },
+      {
+        "book": "Amốt",
+        "folder": "Amot",
+        "totalChapters": 9
+      },
+      {
+        "book": "Ôvađia",
+        "folder": "Ovaia",
+        "totalChapters": 1
+      },
+      {
+        "book": "Giôna",
+        "folder": "Giona",
+        "totalChapters": 4
+      },
+      {
+        "book": "Mikha",
+        "folder": "Mikha",
+        "totalChapters": 7
+      },
+      {
+        "book": "Nakhum",
+        "folder": "Nakhum",
+        "totalChapters": 3
+      },
+      {
+        "book": "Khabacúc",
+        "folder": "Khabacuc",
+        "totalChapters": 3
+      },
+      {
+        "book": "Xôphônia",
+        "folder": "Xophonia",
+        "totalChapters": 3
+      },
+      {
+        "book": "Khácgai",
+        "folder": "Khacgai",
+        "totalChapters": 2
+      },
+      {
+        "book": "Dacaria",
+        "folder": "Dacaria",
+        "totalChapters": 14
+      },
+      {
+        "book": "Malakhi",
+        "folder": "Malakhi",
+        "totalChapters": 3
+      }
+    ]
+  },
+  {
+    "bible": "Tân Ước",
+    "books": [
+      {
+        "book": "Mathêu",
+        "folder": "Matheu",
+        "totalChapters": 28
+      },
+      {
+        "book": "Marcô",
+        "folder": "Marco",
+        "totalChapters": 16
+      },
+      {
+        "book": "Luca",
+        "folder": "Luca",
+        "totalChapters": 24
+      },
+      {
+        "book": "Gioan",
+        "folder": "Gioan",
+        "totalChapters": 21
+      },
+      {
+        "book": "Công Vụ Tông Đồ",
+        "folder": "CongVuTongo",
+        "totalChapters": 28
+      },
+      {
+        "book": "Rôma",
+        "folder": "Roma",
+        "totalChapters": 16
+      },
+      {
+        "book": "Côrintô I",
+        "folder": "CorintoI",
+        "totalChapters": 16
+      },
+      {
+        "book": "Côrintô II",
+        "folder": "CorintoII",
+        "totalChapters": 13
+      },
+      {
+        "book": "Galát",
+        "folder": "Galat",
+        "totalChapters": 6
+      },
+      {
+        "book": "Êphêsô",
+        "folder": "Epheso",
+        "totalChapters": 6
+      },
+      {
+        "book": "Philípphê",
+        "folder": "Philipphe",
+        "totalChapters": 4
+      },
+      {
+        "book": "Côlôsê",
+        "folder": "Colose",
+        "totalChapters": 4
+      },
+      {
+        "book": "Thêxalônica I",
+        "folder": "ThexalonicaI",
+        "totalChapters": 5
+      },
+      {
+        "book": "Thêxalônica II",
+        "folder": "ThexalonicaII",
+        "totalChapters": 3
+      },
+      {
+        "book": "Timôthê I",
+        "folder": "TimotheI",
+        "totalChapters": 6
+      },
+      {
+        "book": "Timôthê II",
+        "folder": "TimotheII",
+        "totalChapters": 4
+      },
+      {
+        "book": "Títô",
+        "folder": "Tito",
+        "totalChapters": 3
+      },
+      {
+        "book": "Philêmôn",
+        "folder": "Philemon",
+        "totalChapters": 1
+      },
+      {
+        "book": "Híp-ri",
+        "folder": "Hipri",
+        "totalChapters": 13
+      },
+      {
+        "book": "Giacôbê",
+        "folder": "Giacobe",
+        "totalChapters": 5
+      },
+      {
+        "book": "Phêrô I",
+        "folder": "PheroI",
+        "totalChapters": 5
+      },
+      {
+        "book": "Phêrô II",
+        "folder": "PheroII",
+        "totalChapters": 3
+      },
+      {
+        "book": "Gioan I",
+        "folder": "GioanI",
+        "totalChapters": 5
+      },
+      {
+        "book": "Gioan II",
+        "folder": "GioanII",
+        "totalChapters": 1
+      },
+      {
+        "book": "Gioan III",
+        "folder": "GioanIII",
+        "totalChapters": 1
+      },
+      {
+        "book": "Giuđa",
+        "folder": "Giua",
+        "totalChapters": 1
+      },
+      {
+        "book": "Khải Huyền",
+        "folder": "KhaiHuyen",
+        "totalChapters": 22
+      }
+    ]
+  }
+]

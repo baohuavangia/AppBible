@@ -1,95 +1,128 @@
-﻿@page "/notes"
+﻿@page "/note-editor"
+@page "/note-editor/{NoteId:int}"
 @using AppBibleNew.Model
 @using AppBibleNew.Service
 @inject NoteService NoteService
 @inject IJSRuntime JS
+@inject NavigationManager Navigation
 
-<h3>📝 Notes</h3>
+<h3>📝 Note Editor</h3>
 
-<input class="form-control mb-2" placeholder="Tiêu đề" @bind="Current.Title" />
-
-<!-- 🖋 Thanh công cụ -->
-<div class="btn-group mb-2">
-    <button class="btn btn-light @(BoldActive ? "active" : "")" @onclick="Bold"><b>B</b></button>
-    <button class="btn btn-light @(ItalicActive ? "active" : "")" @onclick="Italic"><i>I</i></button>
-    <button class="btn btn-light @(UnderlineActive ? "active" : "")" @onclick="Underline"><u>U</u></button>
-    <button class="btn btn-light @(BulletActive ? "active" : "")" @onclick="Bullet">• List</button>
-    <button class="btn btn-light @(NumberActive ? "active" : "")" @onclick="Number">1. List</button>
-</div>
-
-<!-- ✍️ Trình soạn thảo -->
-<div id="editor"
-     class="form-control border p-2 mb-2"
-     contenteditable="true"
-     @onmouseup="UpdateToolbarState"
-     @onkeyup="UpdateToolbarState"
-     style="min-height:150px; border-radius:5px;">
+<div class="border p-2 mb-2 rounded" style="background-color:#fff7d1;">
+    <input id="editorInput"
+           class="form-control border-0"
+           placeholder="Tiêu đề"
+           @bind="Current.Title" />
+    <hr />
+    <div id="editor"
+         class="form-control border-0"
+         contenteditable="true"
+         data-placeholder="Nhập nội dung..."
+         @onmouseup="UpdateToolbarState"
+         @onkeyup="UpdateToolbarState"
+         style="height:50vh; background-color:transparent;">
+    </div>
+    <hr />
+    <div class="btn-group mb-2">
+        <button class="btn btn-light @(BoldActive ? "active" : "")" @onclick="Bold"><b>B</b></button>
+        <button class="btn btn-light @(ItalicActive ? "active" : "")" @onclick="Italic"><i>I</i></button>
+        <button class="btn btn-light @(UnderlineActive ? "active" : "")" @onclick="Underline"><u>U</u></button>
+        <button class="btn btn-light @(BulletActive ? "active" : "")" @onclick="Bullet">• List</button>
+        <button class="btn btn-light @(NumberActive ? "active" : "")" @onclick="Number">1. List</button>
+    </div>
 </div>
 
 <button class="btn btn-primary" @onclick="SaveNote">
     @(Current.Id == 0 ? "💾 Lưu" : "💾 Cập nhật")
 </button>
-<button class="btn btn-secondary ms-2" @onclick="NewNote">📝 Tạo mới</button>
+<button class="btn btn-secondary ms-2" @onclick="Cancel">↩ Quay lại</button>
 
-<hr />
+<style>
+    /* Input tiêu đề */
+    #editorInput {
+        background-color: transparent;
+        padding: 8px;
+        outline: none;
+        box-shadow: none;
+    }
 
-<!-- 📋 Danh sách Note -->
-@foreach (var note in Notes)
-{
-    <div class="card my-2">
-        <div class="card-body">
-            <h5>@note.Title</h5>
-            <div>@((MarkupString)note.Content)</div>
-            <small class="text-muted">@note.CreatedAt</small>
-            <div class="mt-2">
-                <button class="btn btn-sm btn-success" @onclick="() => EditNote(note)">✏ Sửa</button>
-                <button class="btn btn-sm btn-danger ms-2" @onclick="() => DeleteNote(note.Id)">🗑 Xóa</button>
-            </div>
-        </div>
-    </div>
-}
+        #editorInput:focus {
+            border-color: #ced4da;
+            box-shadow: none;
+        }
+
+    /* Editor contenteditable */
+    #editor {
+        min-height: 150px;
+        background-color: transparent;
+        outline: none;
+        padding: 8px;
+    }
+
+        #editor:focus {
+            box-shadow: none;
+            border-color: #ced4da;
+        }
+
+        /* Placeholder cho div contenteditable */
+        #editor:empty:before {
+            content: attr(data-placeholder);
+            color: #888;
+            pointer-events: none;
+        }
+
+    /* Toolbar button */
+    .btn-light {
+        background-color: white;
+    }
+
+        .btn-light:focus {
+            box-shadow: none;
+        }
+
+        .btn-light.active {
+            background-color: #e2e6ea;
+        }
+</style>
 
 @code {
-    private List<Note> Notes = new();
+    [Parameter] public int? NoteId { get; set; }
     private Note Current = new() { CreatedAt = DateTime.Now };
-
     private bool BoldActive, ItalicActive, UnderlineActive, BulletActive, NumberActive;
 
-    protected override void OnInitialized()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Notes = NoteService.GetAll();
+        if (firstRender && NoteId.HasValue)
+        {
+            var note = NoteService.GetAll().FirstOrDefault(n => n.Id == NoteId.Value);
+            if (note != null)
+            {
+                Current = new Note
+                {
+                    Id = note.Id,
+                    Title = note.Title,
+                    Content = note.Content,
+                    CreatedAt = note.CreatedAt
+                };
+
+                // Cập nhật nội dung editor
+                await JS.InvokeVoidAsync("setEditorContent", Current.Content);
+
+                // Cập nhật state để input hiển thị title
+                StateHasChanged();
+            }
+        }
     }
+
 
     async Task SaveNote()
     {
-        var content = await JS.InvokeAsync<string>("getEditorContent");
-        Current.Content = content;
-
+        Current.Content = await JS.InvokeAsync<string>("getEditorContent");
         NoteService.Save(Current);
-        Notes = NoteService.GetAll();
-
-        Current = new Note { CreatedAt = DateTime.Now };
-        await JS.InvokeVoidAsync("clearEditor");
-        StateHasChanged();
+        Navigation.NavigateTo("/study");
     }
 
-    void DeleteNote(int id)
-    {
-        NoteService.Delete(id);
-        Notes = NoteService.GetAll();
-    }
-
-    async Task EditNote(Note note)
-    {
-        Current = note;
-        await JS.InvokeVoidAsync("setEditorContent", note.Content);
-    }
-
-    void NewNote()
-    {
-        Current = new Note { CreatedAt = DateTime.Now };
-        JS.InvokeVoidAsync("clearEditor");
-    }
+    void Cancel() => Navigation.NavigateTo("/study");
 
     async Task Bold() => await Format("bold");
     async Task Italic() => await Format("italic");

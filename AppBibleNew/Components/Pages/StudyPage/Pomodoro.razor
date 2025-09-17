@@ -1,177 +1,213 @@
 ﻿@page "/pomodoro"
-@using System.Timers
+@using AppBibleNew.Services
+@using Plugin.Maui.Audio
+@inject PomodoroService TimerService
+@inject IAudioManager AudioManager
+<style>
+    /* Ẩn spinner trên Chrome, Edge, Safari */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-<div class="container text-center py-4">
-
-    <h2>⏳ Pomodoro Timer</h2>
-
-    <!-- Nút điều khiển -->
-    <div class="mb-3">
-        <button class="btn btn-primary me-2" @onclick="StartTimer" disabled="@isRunning">Bắt đầu</button>
-        <button class="btn btn-warning me-2" @onclick="PauseTimer" disabled="@(!isRunning)">Tạm dừng</button>
-        <button class="btn btn-success me-2" @onclick="ResumeTimer" disabled="@(!isPaused)">Tiếp tục</button>
-        <button class="btn btn-danger" @onclick="ResetTimer">Đặt lại</button>
-    </div>
-
-    <!-- Thông báo khi hết giờ -->
+    /* Ẩn spinner trên Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+<div class="container text-center">
     @if (showAlert)
     {
         <div class="alert alert-info" role="alert">
             ⏰ Hết giờ làm việc! Sẽ chuyển sang nghỉ trong 10 giây...
         </div>
     }
-
-    <!-- Vòng tròn SVG -->
-    <div style="width:200px; height:200px; margin:30px auto;">
-        <svg width="200" height="200">
-            <!-- Vòng nền -->
-            <circle cx="100" cy="100" r="90" stroke="#eee" stroke-width="15" fill="none" />
-            <!-- Vòng tiến trình -->
-            <circle cx="100" cy="100" r="90"
+    <div style="width:250px; height:250px; margin:auto;">
+        <svg width="250" height="250">
+            <!-- Tâm ở giữa SVG: 125,125 -->
+            <!-- bán kính = 125 - 15/2 = 117.5 (15 là stroke-width) -->
+            <circle cx="125" cy="125" r="117.5" stroke="#eee" stroke-width="15" fill="none" />
+            <circle cx="125" cy="125" r="117.5"
                     stroke="#4caf50"
                     stroke-width="15"
                     fill="none"
                     stroke-dasharray="@circumference"
                     stroke-dashoffset="@dashOffset"
                     stroke-linecap="round"
-                    transform="rotate(-90 100 100)" />
-
-            <!-- Nếu chưa chạy thì hiển thị input, nếu đang chạy thì hiển thị thời gian -->
-            @if (!isRunning && !isPaused)
-            {
-                <foreignObject x="40" y="80" width="120" height="40">
-                    <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;justify-content:center;align-items:center;gap:5px;">
-                        <input type="number" min="0" max="59" style="width:40px;text-align:center;" @bind="setMinutes" /> :
-                        <input type="number" min="0" max="59" style="width:40px;text-align:center;" @bind="setSeconds" />
-                    </div>
-                </foreignObject>
-            }
-            else
-            {
-                <g>
-                    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="24">
-                        @timeLeft.Minutes.ToString("00"):@timeLeft.Seconds.ToString("00")
-                    </text>
-                </g>
-            }
+                    transform="rotate(-90 125 125)" />
+            <g>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="35">
+                    @timeLeft.Minutes.ToString("00"):@timeLeft.Seconds.ToString("00")
+                </text>
+            </g>
         </svg>
     </div>
+    <div style="display:flex;justify-content:center;align-items:center;" class="m-1">
+        <input class="border-0" type="number" min="0" max="59" style="width:40px;text-align:center;" @bind="TimerService.WorkMinutes" /> :
+        <input class="border-0" type="number" min="0" max="59" style="width:40px;text-align:center;" @bind="TimerService.WorkSeconds" />
+    </div>
+    <div class="d-flex flex-column align-items-center mb-3">
+        <!-- Nút Play / Pause / Resume -->
+        <button class="btn btn-primary rounded-circle"
+                style="width:4vw; height:4vw; font-size:1.2rem;"
+                @onclick="OnPlayPauseClick">
+            @if (!TimerService.IsRunning && !TimerService.IsPaused)
+            {
+                <span>▶</span>
+            }
+            else if (TimerService.IsRunning)
+            {
+                <span>⏸</span>
+            }
+            else if (TimerService.IsPaused)
+            {
+                <span>▶</span>
+            }
+        </button>
 
-    <div>
-        <strong>Trạng thái:</strong> @(isBreak ? "Đang nghỉ" : "Đang làm việc")
+        <!-- Nút Reset dạng text -->
+        <button class="border-0 bg-transparent"
+                style="font-size:1rem;"
+                @onclick="Reset">
+            Đặt lại
+        </button>
     </div>
 
+
+    <div>
+        <strong>Trạng thái:</strong> @(TimerService.IsBreak ? "Đang nghỉ" : "Đang làm việc")
+    </div>
+</div>
+
+<!-- 📌 Bootstrap Modal -->
+<div class="modal fade @(showModal ? "show d-block" : "")" tabindex="-1" style="background:rgba(0,0,0,0.5);">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">⏰ Hết giờ nghỉ</h5>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có muốn bắt đầu phiên làm việc tiếp theo không?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" @onclick="CancelContinue">Không</button>
+                <button class="btn btn-primary" @onclick="ConfirmContinue">OK</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @code {
-    // Thời gian người dùng đặt
-    private int setMinutes = 25;
-    private int setSeconds = 0;
-
-    // Thời gian nghỉ mặc định 5 phút
-    private int breakMinutes = 5;
-    private int breakSeconds = 0;
-
-    private bool isRunning = false;
-    private bool isPaused = false;
-    private bool isBreak = false;
-
-    private bool showAlert = false;  // hiện thông báo
-
     private TimeSpan timeLeft;
-    private System.Timers.Timer? timer;
-
-    private double circumference = 2 * Math.PI * 90;
+    private double circumference = 2 * Math.PI * 117.5;
     private double dashOffset;
+    private bool showAlert = false;
+    private bool showModal = false;
 
-    private void StartTimer()
+    protected override void OnInitialized()
     {
-        if (isRunning) return;
-
-        isRunning = true;
-        isPaused = false;
-        isBreak = false;
-        showAlert = false;
-
-        // Gán thời gian làm việc ban đầu từ input
-        timeLeft = new TimeSpan(0, setMinutes, setSeconds);
-        dashOffset = 0;
-
-        timer = new System.Timers.Timer(1000);
-        timer.Elapsed += OnTick;
-        timer.Start();
-    }
-
-    private void PauseTimer()
-    {
-        if (!isRunning) return;
-        isRunning = false;
-        isPaused = true;
-        timer?.Stop();
-    }
-
-    private void ResumeTimer()
-    {
-        if (!isPaused) return;
-        isPaused = false;
-        isRunning = true;
-        timer?.Start();
-    }
-
-    private void ResetTimer()
-    {
-        isRunning = false;
-        isPaused = false;
-        isBreak = false;
-        showAlert = false;
-        timer?.Stop();
-        timeLeft = new TimeSpan(0, setMinutes, setSeconds);
-        dashOffset = 0;
-    }
-
-    private async void OnTick(object? sender, ElapsedEventArgs e)
-    {
-        if (timeLeft.TotalSeconds > 0)
+        TimerService.OnTick += t =>
         {
-            timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+            timeLeft = t;
             UpdateProgress();
-        }
-        else
+            InvokeAsync(StateHasChanged);
+        };
+
+        // Hết giờ làm việc
+        TimerService.OnWorkEnd += async () =>
         {
-            timer?.Stop();
+            // dừng ngay khi hết giờ làm
+            TimerService.Pause();
+            showAlert = true;
+            await PlayAlarm();
+            await InvokeAsync(StateHasChanged);
 
-            if (!isBreak)
-            {
-                // Hết giờ làm việc → hiển thị thông báo 10s
-                showAlert = true;
-                await InvokeAsync(StateHasChanged);
+            // đợi 10s hiển thị alert
+            await Task.Delay(10000);
 
-                await Task.Delay(10000); // đợi 10s
+            showAlert = false;
+            // bắt đầu thời gian nghỉ
+            TimerService.StartBreak();
+            await InvokeAsync(StateHasChanged);
+        };
 
-                showAlert = false;
-                isBreak = true;
-                timeLeft = new TimeSpan(0, breakMinutes, breakSeconds);
-                timer?.Start();
-            }
-            else
-            {
-                // Hết giờ nghỉ → quay lại làm việc
-                isBreak = false;
-                timeLeft = new TimeSpan(0, setMinutes, setSeconds);
-                timer?.Start();
-            }
-        }
+        // Hết giờ nghỉ
+        TimerService.OnBreakEnd += async () =>
+        {
+            // dừng ngay
+            TimerService.Pause();
+            await PlayAlarm();
 
-        await InvokeAsync(StateHasChanged);
+            // hiện modal hỏi có tiếp tục ko
+            showModal = true;
+            await InvokeAsync(StateHasChanged);
+        };
     }
+    private void OnPlayPauseClick()
+    {
+        if (!TimerService.IsRunning && !TimerService.IsPaused)
+        {
+            TimerService.Start(); // Start
+        }
+        else if (TimerService.IsRunning)
+        {
+            TimerService.Pause(); // Pause
+        }
+        else if (TimerService.IsPaused)
+        {
+            TimerService.Resume(); // Resume
+        }
+    }
+    private void ConfirmContinue()
+    {
+        // Ẩn modal và bắt đầu phiên làm việc mới
+        showModal = false;
+        TimerService.Reset();
+        TimerService.Start();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void CancelContinue()
+    {
+        // Ẩn modal và giữ dừng (reset về trạng thái ban đầu, người dùng có thể bấm Bắt đầu)
+        showModal = false;
+        TimerService.Reset();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void Start() => TimerService.Start();
+    private void Pause() => TimerService.Pause();
+    private void Resume() => TimerService.Resume();
+    private void Reset() => TimerService.Reset();
 
     private void UpdateProgress()
     {
-        double totalSeconds = isBreak
-            ? (breakMinutes * 60 + breakSeconds)
-            : (setMinutes * 60 + setSeconds);
+        double totalSeconds = TimerService.IsBreak
+            ? (TimerService.BreakMinutes * 60 + TimerService.BreakSeconds)
+            : (TimerService.WorkMinutes * 60 + TimerService.WorkSeconds);
+
+        // tránh chia cho 0
+        if (totalSeconds <= 0)
+        {
+            dashOffset = 0;
+            return;
+        }
 
         double percent = 1 - (timeLeft.TotalSeconds / totalSeconds);
         dashOffset = circumference * percent;
+    }
+
+    private async Task PlayAlarm()
+    {
+        try
+        {
+            var player = AudioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("Alarm 1.mp3"));
+            player.Play();
+        }
+        catch
+        {
+            // ignore or log nếu file ko tìm thấy
+        }
     }
 }

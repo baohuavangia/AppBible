@@ -1,4 +1,5 @@
 ﻿using Plugin.Maui.Audio;
+using System.Diagnostics;
 using YoutubeExplode;
 using YoutubeExplode.Common;
 using YoutubeExplode.Videos.Streams;
@@ -110,7 +111,6 @@ public class AudioService
     // internal method that actually loads/plays the youtube audio stream
     private async Task PlayYoutubeInternal(string url)
     {
-        // avoid concurrent loads
         if (youtubeLoading) return;
         youtubeLoading = true;
         try
@@ -119,7 +119,6 @@ public class AudioService
 
             var yt = new YoutubeClient();
 
-            // if user pasted full URL, YoutubeExplode works with that
             var video = await yt.Videos.GetAsync(url);
             var manifest = await yt.Videos.Streams.GetManifestAsync(video.Id);
             var audioStreamInfo = manifest.GetAudioOnlyStreams().GetWithHighestBitrate();
@@ -128,7 +127,6 @@ public class AudioService
             {
                 var stream = await yt.Videos.Streams.GetAsync(audioStreamInfo);
 
-                // create player from stream (Plugin.Maui.Audio will consume the stream)
                 player = audioManager.CreatePlayer(stream);
                 player.Volume = Volume;
                 player.Play();
@@ -136,11 +134,23 @@ public class AudioService
                 youtubeLoaded = true;
             }
         }
+        catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Forbidden)
+        {
+            // YouTube 403
+            Debug.WriteLine($"403 Forbidden: {ex.Message}");
+            await App.Current.MainPage.DisplayAlert("Lỗi YouTube", "Không thể tải video (403 Forbidden).", "OK");
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Lỗi khi phát YouTube: {ex.Message}");
+            await App.Current.MainPage.DisplayAlert("Lỗi YouTube", "Có lỗi xảy ra khi phát video.", "OK");
+        }
         finally
         {
             youtubeLoading = false;
         }
     }
+
 
     // --- common controls ---
     public void Play()
@@ -233,4 +243,8 @@ public class AudioService
         var dur = video.Duration ?? TimeSpan.Zero;
         return (video.Title, thumb, dur);
     }
+    // thêm ở phần public properties
+    // thêm ở phần public properties
+    public int CurrentIndex => currentIndex;
+    public string? CurrentFileRelative => (currentIndex >= 0 && currentIndex < playlist.Count) ? playlist[currentIndex] : null;
 }

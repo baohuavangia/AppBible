@@ -1,4 +1,4 @@
-﻿@page "/studyAudio"
+﻿
 @using AppBibleNew.Service
 @inject AudioService audioService
 @using System.Diagnostics;
@@ -229,7 +229,7 @@
         audioService.Stop();
 
         // Load tất cả file mp3 trong folder wwwroot/audio/audioMusic
-        var folder = Path.Combine(Environment.CurrentDirectory, "wwwroot/audio/audioMusic");
+        var folder = Path.Combine(Environment.CurrentDirectory, "wwwroot/audio/audioPrayer");
         if (Directory.Exists(folder))
         {
             foreach (var file in Directory.GetFiles(folder, "*.mp3"))

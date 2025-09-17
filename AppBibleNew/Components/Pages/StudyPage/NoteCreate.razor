@@ -1,0 +1,87 @@
+﻿@page "/notes-list"
+@using AppBibleNew.Model
+@using AppBibleNew.Service
+@inject NoteService NoteService
+@inject NavigationManager Navigation
+<div class="border rounded p-2">
+    <button class="btn btn-outline-secondary" @onclick="NewNote">📝+</button>
+    @if (Notes == null || !Notes.Any())
+    {
+        <p>Chưa có note nào.</p>
+    }
+    else
+    {
+        <div class="note-list-container mt-1">
+            @foreach (var note in Notes)
+            {
+                <div class="card my-2 rounded shadow-sm">
+                    <div class="card-body" style="background-color:#fff7d1;">
+                        <h5>@note.Title</h5>
+                        <small class="text-muted">@note.CreatedAt</small>
+                        <div class="mt-2">
+                            <button class="btn btn-sm btn-success" @onclick="() => EditNote(note.Id)">✏ Sửa</button>
+                            <button class="btn btn-sm btn-danger ms-2" @onclick="() => DeleteNote(note.Id)">🗑 Xóa</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+
+
+<style>
+    .card {
+        border: none;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    button:focus {
+        box-shadow: none !important;
+    }
+
+    .note-list-container {
+        max-height: 600px; /* ~ khoảng 8 thẻ card cao vừa */
+        overflow-y: auto;
+        padding-right: 6px;
+    }
+
+        .note-list-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .note-list-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+
+</style>
+
+@code {
+    private List<Note> Notes = new();
+
+    protected override void OnInitialized()
+    {
+        LoadNotes();
+    }
+
+    private void LoadNotes()
+    {
+        Notes = NoteService.GetAll()
+                       .OrderByDescending(n => n.CreatedAt)
+                       .ToList();
+    }
+
+    void NewNote() => Navigation.NavigateTo("/note-editor");
+    void EditNote(int id) => Navigation.NavigateTo($"/note-editor/{id}");
+    void DeleteNote(int id)
+    {
+        NoteService.Delete(id);
+        LoadNotes();
+    }
+}

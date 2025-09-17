@@ -1,10 +1,10 @@
 ﻿@page "/bible/{bibleName}/{bookName}"
 @using AppBibleNew.Service
 @using AppBibleNew.Model
-@using AppBibleNew.Model
-
+@using System.Text.Json
 @inject IBibleService BibleService
 @inject IJSRuntime JS
+@inject NavigationManager Nav   
 
 <style>
     .highlight-verse {
@@ -48,12 +48,6 @@
         <div class="row mb-3">
             <div class="col-12">
                 <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
-                    @* <button class="btn btn-outline-secondary btn-sm"
-                            @onclick="BackChapter"
-                            disabled="@(currentChapter <= 1)">
-                        ◀ Trước
-                    </button> *@
-
                     <select class="form-select" style="width:150px;"
                             value="@currentChapter"
                             @onchange="OnChapterChanged">
@@ -76,11 +70,11 @@
                         }
                     </select>
 
-                    @* <button class="btn btn-outline-secondary btn-sm"
-                            @onclick="NextChapter"
-                            disabled="@(currentChapter >= totalChapters)">
-                        Sau ▶
-                    </button> *@
+                    <!-- ✅ Nút Nghe Audio -->
+                    <button class="btn btn-primary ms-2"
+                            @onclick="GoToAudio">
+                        🔊 Nghe Audio
+                    </button>
                 </div>
             </div>
         </div>
@@ -192,7 +186,6 @@
 
         var chapter = currentBook.Chapters[currentChapter - 1];
 
-        // Lấy tất cả câu trong chương, nối liền
         currentChapterVerses = chapter.Sections?
             .SelectMany(s => s.Subsections ?? new List<SubSection>())
             .SelectMany(ss => ss.Content ?? new List<Verse>())
@@ -205,7 +198,7 @@
         if (currentChapter < totalChapters)
         {
             currentChapter++;
-            currentVerse = 0; // reset highlight
+            currentVerse = 0;
             LoadChapterContent();
         }
     }
@@ -215,7 +208,7 @@
         if (currentChapter > 1)
         {
             currentChapter--;
-            currentVerse = 0; // reset highlight
+            currentVerse = 0;
             LoadChapterContent();
         }
     }
@@ -226,7 +219,7 @@
             chap > 0 && chap <= totalChapters)
         {
             currentChapter = chap;
-            currentVerse = 0; // reset highlight
+            currentVerse = 0;
             LoadChapterContent();
             await InvokeAsync(StateHasChanged);
         }
@@ -237,15 +230,78 @@
         if (int.TryParse(e.Value?.ToString(), out int v) && v > 0)
         {
             currentVerse = v;
-            StateHasChanged(); // apply highlight
+            StateHasChanged();
             await ScrollToVerse(v);
         }
     }
 
     private async Task ScrollToVerse(int verseNumber)
     {
-        await Task.Delay(100); // đợi Blazor render
+        await Task.Delay(100);
         await JS.InvokeVoidAsync("eval",
             $"document.getElementById('verse-{verseNumber}')?.scrollIntoView({{ behavior: 'smooth', block: 'center' }});");
     }
+
+    // ✅ Hàm điều hướng Audio
+    // Helper: tìm folder trong file JSON theo tên sách
+    private async Task<string?> GetFolderForBookAsync(string bookNameToFind)
+    {
+        try
+        {
+            var jsonPath = Path.Combine(AppContext.BaseDirectory, "wwwroot", "bible_books_audio.json");
+            if (!File.Exists(jsonPath)) return null;
+
+            var json = await File.ReadAllTextAsync(jsonPath);
+            using var doc = JsonDocument.Parse(json);
+
+            foreach (var group in doc.RootElement.EnumerateArray())
+            {
+                if (!group.TryGetProperty("books", out var booksElement)) continue;
+                foreach (var b in booksElement.EnumerateArray())
+                {
+                    var bookName = b.GetProperty("book").GetString();
+                    var folder = b.GetProperty("folder").GetString();
+
+                    if (!string.IsNullOrEmpty(bookName) &&
+                        string.Equals(bookName.Trim(), bookNameToFind?.Trim(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        return folder;
+                    }
+                }
+            }
+        }
+        catch
+        {
+            // ignore parse errors
+        }
+        return null;
+    }
+
+    // MỚI: async GoToAudio dùng helper để lấy folder rồi điều hướng
+    private async Task GoToAudio()
+    {
+        if (currentBook == null)
+        {
+            await JS.InvokeVoidAsync("alert", "Không có sách hiện tại để phát audio.");
+            return;
+        }
+
+        // tìm folder dựa trên tên sách (không cần currentBook.Folder)
+        var folder = await GetFolderForBookAsync(currentBook.Book);
+        if (string.IsNullOrEmpty(folder))
+        {
+            // thử dùng bookName param (trường hợp tên sách khác)
+            folder = await GetFolderForBookAsync(bookName);
+        }
+
+        if (string.IsNullOrEmpty(folder))
+        {
+            await JS.InvokeVoidAsync("alert", $"Không tìm thấy folder audio cho sách '{currentBook.Book}'.");
+            return;
+        }
+
+        // navigate tới trang audio với folder và chapter hiện tại
+        Nav.NavigateTo($"/bibleAudio/{folder}/{currentChapter}");
+    }
+
 }

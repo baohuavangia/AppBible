@@ -60,7 +60,11 @@
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
-
+	<ItemGroup>
+		<None Include="Resources\yt-dlp.exe">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
     <ItemGroup>
       <Compile Remove="Components\Pages\SettingPage\**" />
       <Content Remove="Components\Pages\SettingPage\**" />
@@ -94,8 +98,18 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="Resources\Raw\Alarm 1.mp3">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
       <Folder Include="Data\" />
-      <Folder Include="wwwroot\audio\" />
+      <Folder Include="wwwroot\audio\audioMusic\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiAsset Include="wwwroot\bible_books_audio.json" />
     </ItemGroup>
 
 </Project>
